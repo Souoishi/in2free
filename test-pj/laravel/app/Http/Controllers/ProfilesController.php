@@ -112,4 +112,13 @@ class ProfilesController extends Controller
         return redirect("/profile/{$user->id}");
         
     }
+
+    public function show(\App\User $user)
+    {
+        // $user = $user::all();
+        $userid = auth()->user()->id;
+        $user = \App\User::all();
+        // compact do the exactly same thing as we did in auth->user->posts()->create...
+        return view('shared.show', compact('user', 'userid'));
+    }
 }
