@@ -4,7 +4,9 @@
 <div class="container">
     <div class="row">
         <div class="col-8">
-            <img src="/storage/{{ $post->image }}" class="w-100">
+            <!--<img src="/storage/{{ $post->image }}" class="w-100">-->
+            <p> {{ $post->short_blog }} </p>
+           
         </div>
 
         <div class="col-4">

@@ -40,7 +40,9 @@
 
             <div class="col-4 pb-4">
                 <a href="/p/{{ $post->id }}">
-                    <img src="/storage/{{ $post->image }}" class="w-100">
+                    
+                    <!--<img src="/storage/{{ $post->image }}" class="w-100">-->
+                    <p>{{ $post->short_blog }}</p>
                 </a>
             </div>
           
