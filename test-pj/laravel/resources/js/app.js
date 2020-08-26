@@ -3,10 +3,14 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+//import Vue from 'vue'
 require('./bootstrap');
+import { BootstrapVue } from 'bootstrap-vue'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 window.Vue = require('vue');
-
+Vue.use(BootstrapVue);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -15,9 +19,12 @@ window.Vue = require('vue');
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-
+//import followb from './components/FollowButton.vue'
+//import profilec from './components/ProfileCard.vue'
+Vue.component('profile-card', require('./components/ProfileCard.vue').default);
 
 Vue.component('follow-b', require('./components/FollowButton.vue').default);
+
 
 
 /**
@@ -27,6 +34,9 @@ Vue.component('follow-b', require('./components/FollowButton.vue').default);
  */
 
 const app = new Vue({
-    el: '#app',
+    el: '#app',   
     
 });
+
+
+

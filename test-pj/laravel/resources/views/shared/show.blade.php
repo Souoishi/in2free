@@ -3,6 +3,9 @@
 @section('content')
 
 <div class="container">
+
+        <profile-card> <profile-card/>
+
     
     @foreach($user as $user)
         @if($user->id !== $userid)
@@ -28,8 +31,10 @@
             </div>
         @endif
     </div>
-    
     @endforeach
+    
+        
+
     <div class="row">
         <div class="col-12 d-flex justify-content-center">
             <!--$user->links-->
@@ -38,4 +43,8 @@
     </div>
 </div>
 
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('/js/app.js') }}"></script>
 @endsection
