@@ -84,11 +84,12 @@ class PostsController extends Controller
     }
     // before you put \App\Post , the $post just get "getvalue on browser (id) from index.blade.php"
     // But once you put them, $post FETCH post function (model) that automatically fetch attributes
-    public function show(\App\Post $post)
+    public function show(\App\Post $post) 
     {
         // compact do the exactly same thing as we did in auth->user->posts()->create...
         return view('posts.show', compact('post'));
     }
+
 
 
 }

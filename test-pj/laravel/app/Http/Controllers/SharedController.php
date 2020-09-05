@@ -19,7 +19,7 @@ class SharedController extends Controller
         // get full user info of the friends 
         $users = User::whereIn('id', $userids)->latest()->paginate(5);
 
-        return view('shared.wating_room', compact('users'));
+        return view('shared.friends', compact('users'));
     }
 
     /**

@@ -36,5 +36,9 @@ Route::patch('/profile/{user}', 'ProfilesController@update')->name('profile.upda
 
 
 // shared pages
-Route::get('/shared/{user}', 'ProfilesController@show')->name('shared.show');
-Route::get('/shared', 'SharedController@index')->name('shared.wating_room');
+Route::get('/shared/{user}', 'ProfilesController@show')->name('shared.debate');
+Route::get('/shared', 'SharedController@index')->name('shared.friends');
+
+
+
+
