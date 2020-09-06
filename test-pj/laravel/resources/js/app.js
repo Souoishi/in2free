@@ -19,9 +19,8 @@ Vue.use(BootstrapVue);
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-//import followb from './components/FollowButton.vue'
-//import profilec from './components/ProfileCard.vue'
-Vue.component('profile-card', require('./components/ProfileCard.vue').default);
+
+//Vue.component('profile-card', require('./components/ProfileCard.vue').default);
 
 Vue.component('follow-b', require('./components/FollowButton.vue').default);
 

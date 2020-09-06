@@ -3,6 +3,7 @@
 @section('content')
 
 <div class="container">
+
     @foreach($posts as $post)
         <div class="row pt-2 pb-4">
             <div class="col-6 offset-3"> 
@@ -10,7 +11,9 @@
                         <span class="font-weight-bold"> 
                         <a href="/profile/{{ $post->user->id }}"> 
                             <span class="text-dark"> {{ $post->user->username }} </span> 
-                        </a>  {{ $post->caption }}
+                        </a>
+                        <br>
+                        <h3>{{ $post->caption }}</h3>
                     </p>
 
             </div>

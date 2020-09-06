@@ -113,12 +113,13 @@ class ProfilesController extends Controller
         
     }
 
-    public function show(\App\User $user)
+    public function show(User $user)
     {
         // $user = $user::all();
         $userid = auth()->user()->id;
-        $user = \App\User::all();
+        $users = \App\User::all();
+        $follows = (auth()->user()) ? auth()->user()->following->contains($user->id) : false;
         // compact do the exactly same thing as we did in auth->user->posts()->create...
-        return view('shared.show', compact('user', 'userid'));
+        return view('shared.debate', compact('user', 'users', 'userid', 'follows'));
     }
 }

@@ -13,6 +13,7 @@
             <div>
                 <div class="d-flex align-items-center">
                     <div class="pr-3">
+                        
                         <img src="{{ $post->user->profile[0]->profileImage() }}" class="rounded-circle w-100" style="max-width: 40px">
                     </div>
                     <div>
