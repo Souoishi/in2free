@@ -1,0 +1,18 @@
+li {
+display: inline-block;
+text-align: center;
+vertical-align: middle;
+margin: 0 10px;
+}
+/* 
+.box-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px;
+}
+
+.box-wrapper .box {
+  width: 400px;
+  margin: auto;
+} */
