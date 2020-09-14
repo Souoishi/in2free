@@ -41,6 +41,7 @@
 
                     {{--  出力  --}}
                     <div id="result"></div>
+                    <div id="text-button" class="btn btn-primary">クリック</div>
                     <!-- /Dictation -->
 
 
