@@ -97,7 +97,17 @@
                         <div style="display:flex;">
                             <follow-b user-id="{{ $user->id }}" follows="{{ $follows }}"> </follow-b>
                             <!--ここでボタン伝いでskaywayidを渡したい！-->
-                            <button id="into_debate" type="button" class="btn btn-success" style="margin-left: 10px;" value="{{ $user->id }}">Lets talk</button>
+                            <button id="into_debate" 
+                                type="button" 
+                                class="btn btn-success" 
+                                style="margin-left: 10px;" 
+                                value="{{ $user->id }}"
+                                onclick='(function(){
+                                    console.log({{ $user->id }})
+                                    $("#friends-box").hide()
+                                    $("#outline-box").show()
+                                })()'
+                                >Lets talk</button>
                         </div>
 
                     </div>
