@@ -19,6 +19,7 @@
     <div class="debate-grid">
 
 
+
         <div class="main-video col-md-7">
                     <!-- Live Video-main -->
                     <video id="my-video" width="100%" height="20%" autoplay muted playsinline></video>
@@ -54,9 +55,10 @@
                 <div class="topic-box">
                     <p id="RealtimeClockArea" class="border-bottom"></p>
                     <div class="card-body">
-                        <h5 class="card-title border-bottom">Talk theme</h5>
+                        <h5 class="card-title border-bottom"> {{$debateTopics[$randomIndex]['topic']}}</h5>
+                        
                         <p class="card-text">
-                        What do you think about xxx?<br>
+                        Category: {{$debateTopics[$randomIndex]['category']}}<br>
                         Agree or Disagree <br>
                         e.g.</p>
                     </div>
@@ -69,7 +71,8 @@
 
 
 
-<div class="friends-box">
+    
+<div id="friends-box" class="friends-box">
 
 
     <!--<profile-card :users="{{ $user }}" >
@@ -90,7 +93,13 @@
                     <div class="card-body">
                         <h5 class="card-title"> Special title treatment</h5>
                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <follow-b user-id="{{ $user->id }}" follows="{{ $follows }}"/>
+
+                        <div style="display:flex;">
+                            <follow-b user-id="{{ $user->id }}" follows="{{ $follows }}"> </follow-b>
+                            <!--ここでボタン伝いでskaywayidを渡したい！-->
+                            <button id="into_debate" type="button" class="btn btn-success" style="margin-left: 10px;" value="{{ $user->id }}">Lets talk</button>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -109,6 +118,42 @@
 
     </div>
 </div>
+<!--int_debate button を押した後、以下のoutlineを出す-->
+<div id="outline-box" class="outline-box" style="display:none">
+    <div class="jumbotron">
+        <h1> Create your Outline </h1>
+        <h3 style="margin: 10px;"> Take your position 
+        <span> 
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary"> Positions</button>
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Agree</a></li> <br>
+                    <li><a href="#">Disagree</a></li> <br>
+                    <li><a href="#">In the middle</a></li>
+                </ul>
+            </div>
+        </span>
+        </h3>
+        <input type="text" class="form-control" placeholder="Your thesis here" aria-describedby="sizing-addon1">
+            <input type="text" style="margin-left:40px" class="form-control" placeholder="First reason" aria-describedby="sizing-addon2">
+            <textarea rows="4" style="margin-left:40px" cols="50"></textarea>
+
+            <input type="text" style="margin-left:40px" class="form-control" placeholder="Second reason" aria-describedby="sizing-addon2">
+            <textarea rows="4" style="margin-left:40px" cols="50"></textarea>
+
+            <input type="text" style="margin-left:40px" class="form-control" placeholder="Third reason" aria-describedby="sizing-addon2">
+            <textarea rows="4" style="margin-left:40px" cols="50"></textarea>
+
+   
+   
+   
+    </div>
+</div>
+
 </div>
 
 @endsection
