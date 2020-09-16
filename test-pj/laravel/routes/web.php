@@ -39,6 +39,6 @@ Route::patch('/profile/{user}', 'ProfilesController@update')->name('profile.upda
 Route::get('/shared/{user}', 'ProfilesController@show')->name('shared.debate');
 Route::get('/shared', 'SharedController@index')->name('shared.friends');
 
-
-
-
+Route::get('/graph/', function() {
+    return view('graph.graph');
+});
