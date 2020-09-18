@@ -54,6 +54,9 @@
 
                 <div class="topic-box">
                     <p id="RealtimeClockArea" class="border-bottom"></p>
+                    <button id = 'start'>スタート</button>
+                    <button id = 'stop'>ストップ</button>
+
                     <div class="card-body">
                         <h5 class="card-title border-bottom"> {{$debateTopics[$randomIndex]['topic']}}</h5>
                         
