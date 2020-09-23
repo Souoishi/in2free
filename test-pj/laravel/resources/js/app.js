@@ -21,7 +21,7 @@ Vue.use(BootstrapVue);
 
 
 //Vue.component('profile-card', require('./components/ProfileCard.vue').default);
-
+Vue.component('post-card', require('./components/PostCard.vue').default);
 Vue.component('follow-b', require('./components/FollowButton.vue').default);
 
 

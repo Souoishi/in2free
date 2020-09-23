@@ -28,9 +28,10 @@
                 </div>
 
                 <div class="row">
-                <label for="short_blog" class="col-md-4 col-form-label">Short blog</label>
+                
                 <!--here change it into text-->
-                <!--<input type="file" class="form-control-file" id="image" name="image">-->
+                <input type="file" class="form-control-file" id="image" name="image">
+                <label for="short_blog" class="col-md-4 col-form-label">Short blog</label>
                 <textarea id="short_blog" type="text" class="form-control @error('short_blog') is-invalid @enderror" name="short_blog" value="{{ old('short_blog') }}">
                 </textarea>
                 @error('image')

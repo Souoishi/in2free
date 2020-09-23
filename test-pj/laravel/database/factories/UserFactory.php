@@ -16,7 +16,7 @@ use Illuminate\Support\Str;
 | model instances for testing / seeding your application's database.
 |
 */
-
+// here You need to connect user id to profile id => same as the contents of intermideate table "profile_user"
 $factory->define(User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
