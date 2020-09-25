@@ -1,0 +1,12 @@
+li {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0 10px;
+    }
+
+    /* Dictasionのテキストbox */
+    .box-voice-output {
+        height: 80px;
+        overflow: auto;
+    }
