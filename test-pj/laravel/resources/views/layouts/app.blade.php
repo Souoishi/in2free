@@ -32,10 +32,10 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/skyway.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-    
+
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    
+
 </head>
 <body>
     <div id="app">
@@ -69,12 +69,12 @@
                                 </li>
                             @endif
                         @else
-                        
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->username }} <span class="caret"></span>
                                 </a>
-                                
+
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
@@ -86,23 +86,23 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
-                                    
-                                    <a class="dropdown-item" href="/profile/{{ auth()->user()->id }}">Profile</a>
-                                    <a class="dropdown-item" href="/shared/{{ auth()->user()->id }}">Debate page</a>
-                                    <a class="dropdown-item" href="/shared">Friends page</a>
+
+                                    <a class="dropdown-item" href="{{ route('profile.show', ['user' => auth()->user()->id]) }}">Profile</a>
+                                    <a class="dropdown-item" href="{{ route('shared.debate',['user' => auth()->user()->id]) }}">Debate page</a>
+                                    <a class="dropdown-item" href="{{ route('shared.friends') }}">Friends page</a>
                                 </div>
 
-                                
+
                             </li>
 
-                           
+
                         @endguest
                     </ul>
                 </div>
             </div>
         </nav>
         <main class="py-4">
-            
+
             @yield('content')
         </main>
     </div>
