@@ -85,7 +85,7 @@
         @if($user->id !== $userid)
         <div class="card">
             <div class="card-header">
-                <a href="/profile/{{ $user->id }}" >
+                <a href="{{ route('profile.show',['user'=>$user->id]) }}" >
                     <span class=“text-dark”> {{ $user->username }} </span>
                 </a>
             </div>

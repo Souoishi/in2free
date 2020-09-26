@@ -89,7 +89,7 @@
 
                                     <a class="dropdown-item" href="{{ route('profile.show', ['user' => auth()->user()->id]) }}">Profile</a>
                                     <a class="dropdown-item" href="{{ route('shared.debate',['user' => auth()->user()->id]) }}">Debate page</a>
-                                    <a class="dropdown-item" href="{{ route('shared.friends') }}">Friends page</a>
+                                    <a class="dropdown-item" href="{{ route('shared.friends', ['user' => auth()->user()->id]) }}">Friends page</a>
                                 </div>
 
 

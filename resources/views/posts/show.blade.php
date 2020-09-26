@@ -18,11 +18,11 @@
                     </div>
                     <div>
                         <div class="font-weight-bold"> 
-                            <a href="/profile/{{ $post->user->id }}"> 
+                            <a href="{{ route('profile.show', ['user'=>$post->user->id]) }}"> 
                                 <span class="text-dark">{{ $post->user->username }} </span> 
                             </a> 
 
-                            <a href="#" class="pl-3">
+                            <a href="{{ route('profile.show', ['user'=>$post->user->id]) }}" class="pl-3">
                                 Follow
                             </a>
 
@@ -34,7 +34,7 @@
                 
                 <p>
                     <span class="font-weight-bold"> 
-                    <a href="/profile/{{ $post->user->id }}"> 
+                    <a href="{{ route('profile.show', ['user'=>$post->user->id]) }}"> 
                         <span class="text-dark"> {{ $post->user->username }} </span> 
                     </a>  {{ $post->caption }}
                 </p>

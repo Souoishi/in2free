@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <form action="/profile/{{ $user->id }}" enctype="multipart/form-data" method="post" >
+    <form action="{{ route('profile.show', ['user'=>auth()->user()->id]) }}" enctype="multipart/form-data" method="post" >
         @csrf
         @method('PATCH')
 
@@ -13,11 +13,11 @@
                 </div>
                 <div class="form-group row">
                     <label for="title" class="col-md-4 col-form-label">title</label>
-                        
-                        <input id="title" 
+
+                        <input id="title"
                                 type="text"
-                                class="form-control @error('title') is-invalid @enderror" 
-                                name="title" 
+                                class="form-control @error('title') is-invalid @enderror"
+                                name="title"
                                 value="{{ old('title') ?? $user->profile[0]->title }}"
                                 autocomplete="title" autofocus>
 
@@ -26,16 +26,16 @@
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
-                    
+
                 </div>
                 <div class="form-group row">
                     <label for="description" class="col-md-4 col-form-label">description</label>
 
-                        <input id="description" 
+                        <input id="description"
                                 type="text"
-                                class="form-control @error('description') is-invalid @enderror" 
-                                name="description" 
-                                value="{{ old('description') ?? $user->profile[0]->description }}" 
+                                class="form-control @error('description') is-invalid @enderror"
+                                name="description"
+                                value="{{ old('description') ?? $user->profile[0]->description }}"
                                 autocomplete="description" autofocus>
 
                         @error('description')
@@ -43,16 +43,16 @@
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
-                    
+
                 </div>
                 <div class="form-group row">
                     <label for="url" class="col-md-4 col-form-label">url</label>
 
-                        <input id="url" 
+                        <input id="url"
                                 type="text"
-                                class="form-control @error('url') is-invalid @enderror" 
-                                name="url" 
-                                value="{{ old('url') ?? $user->profile[0]->url }}" 
+                                class="form-control @error('url') is-invalid @enderror"
+                                name="url"
+                                value="{{ old('url') ?? $user->profile[0]->url }}"
                                 autocomplete="url" autofocus>
 
                         @error('url')
@@ -60,14 +60,14 @@
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
-                    
+
                 </div>
 
                 <div class="row">
                 <label for="image" class="col-md-4 col-form-label">Profile image</label>
                 <input type="file" class="form-control-file" id="image" name="image">
                 @error('image')
-                           
+
                                 <strong>{{ $message }}</strong>
                             </span>
                 @enderror

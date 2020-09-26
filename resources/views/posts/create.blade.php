@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <form action="/p" enctype="multipart/form-data" method="post" >
+    <form action="{{ route('post.store') }}" enctype="multipart/form-data" method="post" >
     @csrf
         <div class="row">
             <div class="col-8 offset-2">
@@ -12,11 +12,11 @@
                 <div class="form-group row">
                     <label for="caption" class="col-md-4 col-form-label">Post Caption</label>
 
-                        <input id="caption" 
+                        <input id="caption"
                                 type="text"
-                                class="form-control @error('caption') is-invalid @enderror" 
-                                name="caption" 
-                                value="{{ old('caption') }}" 
+                                class="form-control @error('caption') is-invalid @enderror"
+                                name="caption"
+                                value="{{ old('caption') }}"
                                 autocomplete="caption" autofocus>
 
                         @error('caption')
@@ -24,7 +24,7 @@
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
-                    
+
                 </div>
 
                 <div class="row">
@@ -34,7 +34,7 @@
                 <textarea id="short_blog" type="text" class="form-control @error('short_blog') is-invalid @enderror" name="short_blog" value="{{ old('short_blog') }}">
                 </textarea>
                 @error('image')
-                           
+
                                 <strong>{{ $message }}</strong>
                             </span>
                 @enderror
