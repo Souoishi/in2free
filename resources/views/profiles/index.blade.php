@@ -4,7 +4,7 @@
 <div class="container">
    <div class="row">
        <div class="col-3 p-5">
-            <img src="{{ $user->profile[0]->profileImage() }}" class="rounded-circle w-100" >
+            <img src="{{ asset($user->profile[0]->profileImage()) }}" class="rounded-circle w-100" >
        </div>
        <div class="col-9 pt-5">
        <!--what are you doing now is same as user.username in js-->
@@ -30,7 +30,7 @@
         </div>
         <div class="pt-4 font-weight-bold">{{ $user->profile[0]->title}}</div>
         <div>{{ $user->profile[0]->description }}</div>
-        <div><a href="{{ $user->profile[0]->url }}">{{ $user->profile[0]->url }}</div>
+        <div><a href="#">{{ $user->profile[0]->url }}</div>
 
        </div>
    </div>

@@ -4,23 +4,23 @@
 <div class="container">
     <div class="row">
         <div class="col-8">
-            <!--<img src="/storage/{{ $post->image }}" class="w-100">-->
+            <!--<{{ asset('/storage/'.$post->image) }}" class="w-100">-->
             <p> {{ $post->short_blog }} </p>
-           
+
         </div>
 
         <div class="col-4">
             <div>
                 <div class="d-flex align-items-center">
                     <div class="pr-3">
-                        
-                        <img src="{{ $post->user->profile[0]->profileImage() }}" class="rounded-circle w-100" style="max-width: 40px">
+
+                        <img src="{{ asset($post->user->profile[0]->profileImage()) }}" class="rounded-circle w-100" style="max-width: 40px">
                     </div>
                     <div>
-                        <div class="font-weight-bold"> 
-                            <a href="{{ route('profile.show', ['user'=>$post->user->id]) }}"> 
-                                <span class="text-dark">{{ $post->user->username }} </span> 
-                            </a> 
+                        <div class="font-weight-bold">
+                            <a href="{{ route('profile.show', ['user'=>$post->user->id]) }}">
+                                <span class="text-dark">{{ $post->user->username }} </span>
+                            </a>
 
                             <a href="{{ route('profile.show', ['user'=>$post->user->id]) }}" class="pl-3">
                                 Follow
@@ -31,11 +31,11 @@
                 </div>
 
                 <hr>
-                
+
                 <p>
-                    <span class="font-weight-bold"> 
-                    <a href="{{ route('profile.show', ['user'=>$post->user->id]) }}"> 
-                        <span class="text-dark"> {{ $post->user->username }} </span> 
+                    <span class="font-weight-bold">
+                    <a href="{{ route('profile.show', ['user'=>$post->user->id]) }}">
+                        <span class="text-dark"> {{ $post->user->username }} </span>
                     </a>  {{ $post->caption }}
                 </p>
 

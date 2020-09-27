@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="video-container">
+    <div class="video-container">
     <h1> Wating room for discussion </h1>
 
         <!-- video-chat screen -->
@@ -15,19 +15,22 @@
             </ul>
         </header>
         <!-- header -->
+    </div>
+
+
+
 
     <div class="debate-grid">
 
 
 
-        <div class="main-video col-md-7">
+        <div class="main-video col-md-12">
                     <!-- Live Video-main -->
-                    <video id="my-video" width="100%" height="20%" autoplay muted playsinline></video>
+                    <video id="my-video2" width="80%" autoplay muted playsinline></video>
 
                     <!-- Live Video-sub -->
-                    <div class="video-2 col-md-3">
-                        <div class="box"><video id="my-video2" width="100%" height="70%" autoplay muted playsinline></video></div>
-                    </div>
+                    <video id="my-video" class="video-myself" width="30%" autoplay muted playsinline></video>
+
                     <!-- Live Video -->
 
 
@@ -59,7 +62,7 @@
 
                     <div class="card-body">
                         <h5 class="card-title border-bottom"> {{$debateTopics[$randomIndex]['topic']}}</h5>
-                        
+
                         <p class="card-text">
                         Category: {{$debateTopics[$randomIndex]['category']}}<br>
                         Agree or Disagree <br>
@@ -74,7 +77,7 @@
 
 
 
-    
+
 <div id="friends-box" class="friends-box">
 
 
@@ -91,7 +94,7 @@
             </div>
             <div class="">
                 <div class="d-flex">
-                    <img src="{{ $user->profile[0]->profileImage() }}" class="rounded-circle" style="width: 10rem; margin:1rem;">
+                    <img src="{{  asset($user->profile[0]->profileImage()) }}" class="rounded-circle" style="width: 10rem; margin:1rem;">
 
                     <div class="card-body">
                         <h5 class="card-title"> Special title treatment</h5>
@@ -100,10 +103,10 @@
                         <div style="display:flex;">
                             <follow-b user-id="{{ $user->id }}" follows="{{ $follows }}"> </follow-b>
                             <!--ここでボタン伝いでskaywayidを渡したい！-->
-                            <button id="into_debate" 
-                                type="button" 
-                                class="btn btn-success" 
-                                style="margin-left: 10px;" 
+                            <button id="into_debate"
+                                type="button"
+                                class="btn btn-success"
+                                style="margin-left: 10px;"
                                 value="{{ $user->id }}"
                                 onclick='(function(){
                                     console.log({{ $user->id }})
@@ -135,8 +138,8 @@
 <div id="outline-box" class="outline-box" style="display:none">
     <div class="jumbotron">
         <h1> Create your Outline </h1>
-        <h3 style="margin: 10px;"> Take your position 
-        <span> 
+        <h3 style="margin: 10px;"> Take your position
+        <span>
             <div class="btn-group">
                 <button type="button" class="btn btn-primary"> Positions</button>
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -161,9 +164,9 @@
             <input type="text" style="margin-left:40px" class="form-control" placeholder="Third reason" aria-describedby="sizing-addon2">
             <textarea rows="4" style="margin-left:40px" cols="50"></textarea>
 
-   
-   
-   
+
+
+
     </div>
 </div>
 
