@@ -19,18 +19,21 @@ navigator.mediaDevices.getUserMedia({video: true, audio: true})
 
 //Peer作成
 const peer = new Peer({
-key: '9ad4aa4b-4140-4291-930b-d527910bedfd',
+key: '48506423-f613-49aa-8ae9-3c73ecf1d0df',
 debug: 3
 });
 
-//PeerID取得
+//PeerID取得 && Assign the id to my card
 peer.on('open', () => {
   document.getElementById('my-id').textContent = peer.id;
+  document.getElementById('my-number').value = peer.id;
+  console.log(document.getElementById('my-number').value)
 });
 
 //発信処理
 document.getElementById('make-call').onclick = () => {
-const theirID = document.getElementById('their-id').value;
+const theirID = document.getElementById('make-call').value;
+//const theirID = document.getElementById('their-id').value;
 const mediaConnection = peer.call(theirID, localStream);
 setEventListener(mediaConnection);
 };

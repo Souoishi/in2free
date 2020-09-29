@@ -3,15 +3,15 @@
 @section('content')
 
 <div class="video-container">
-    <h1> Wating room for discussion </h1>
+    <h1 class="debate-wating-room title"> Wating room for discussion </h1>
 
         <!-- video-chat screen -->
         <header>
             <ul>
             <li><p>My Room ID : <span id="my-id"></span></p></li>
             <li><input id="their-id" class="form-control" placeholder="IDを入力してください"></li>
-            <li><button id="make-call" class="btn btn-outline-primary">Enter</button></li>
-            <li><button id="end-call" class="btn btn-outline-secondary">Leave</button></li>
+            <li><button id="make-call" class="btn btn-outline-primary" style="background: #3b7ea1; border-color:#3b7ea1; color:#fdb515">Enter</button></li>
+            <li><button id="end-call" class="btn btn-outline-secondary" style="background: #C4820E; border-color:#C4820E; color:white">Leave</button></li>
             </ul>
         </header>
         <!-- header -->
@@ -34,7 +34,7 @@
 
                     <!-- Dictation -->
                     {{--  大枠  --}}
-                    <div class="col-md-10 border border-secondary round">
+                    <div class="voice-output col-md-10 border border-secondary round">
                         <h5 class="border-bottom">Dictation</h5>
                         {{--  出力先  --}}
                         <div id="content" class="box-voice-output"></div>
@@ -42,7 +42,7 @@
 
                     {{--  出力  --}}
                     <div id="result"></div>
-                    <div id="text-button" class="btn btn-primary">クリック</div>
+                    <div id="text-button" class="btn btn-primary" style="background: #3b7ea1; border-color:#3b7ea1; color:#fdb515">download</div>
                     <!-- /Dictation -->
 
 
@@ -53,9 +53,9 @@
                 <!-- side:topic-box -->
 
                 <div class="topic-box">
-                    <p id="RealtimeClockArea" class="border-bottom"></p>
-                    <button id = 'start'>スタート</button>
-                    <button id = 'stop'>ストップ</button>
+                    <p id="RealtimeClockArea" class="border-bottom"></p><!--#3b7ea1   #fdb515-->
+                    <button id ='start' type="button" class="btn btn-primary" style="background: #3b7ea1; border-color:#3b7ea1; color:#fdb515; margin-right:10px">Fire up</button>
+                    <button id ='stop' type="button" class="btn btn-primary" style="background: #C4820E; border-color:#C4820E; color:white">Stop</button>
 
                     <div class="card-body">
                         <h5 class="card-title border-bottom"> {{$debateTopics[$randomIndex]['topic']}}</h5>
@@ -82,8 +82,9 @@
     <profile-card/>-->
 
     @foreach($users as $user)
-        @if($user->id !== $userid)
-        <div class="card">
+    <!--嘘！！！ちゃんとここにも自分のカード出す！自分のユーザーIDを持ってるカードに、自分のIDをいれる！但し、CSSは隠す　display:none;-->
+        @if($user->id === $userid)
+        <div class="card" style="display:none">
             <div class="card-header">
                 <a href="/profile/{{ $user->id }}" >
                     <span class=“text-dark”> {{ $user->username }} </span>
@@ -100,17 +101,70 @@
                         <div style="display:flex;">
                             <follow-b user-id="{{ $user->id }}" follows="{{ $follows }}"> </follow-b>
                             <!--ここでボタン伝いでskaywayidを渡したい！-->
-                            <button id="into_debate" 
+                            <!--make-call-->
+                            <!--my-id.value should be assigned to value -->
+                            <!--in script.js, get the value , then insert it into value of thier-id-->
+                            <button id="my-number" 
                                 type="button" 
                                 class="btn btn-success" 
-                                style="margin-left: 10px;" 
+                                style="margin-left: 10px; background: #3b7ea1; border-color:#3b7ea1; color:#fdb515;" 
+                                
+                                onclick='(function(){
+                                    console.log({{ $user->id }})
+                                    $("#friends-box").hide()
+                                    $("#outline-box").show()
+                                })()'
+                                >Make call</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @elseif ($user->id !== $userid)
+        <div class="card">
+            <div class="card-header">
+                <a href="/profile/{{ $user->id }}" >
+                    <span class=“text-dark”> {{ $user->username }} </span>
+                    @if($user->isOnline())
+                    
+                        <li class="text-success">
+                            Online
+                        </li>
+                    @else
+                    
+                        <li class="text-muted">
+                            Offline
+                        </li>
+                    @endif
+                </a>
+            </div>
+            <div class="">
+                <div class="d-flex">
+                    <img src="{{ $user->profile[0]->profileImage() }}" class="rounded-circle" style="width: 10rem; margin:1rem;">
+
+                    <div class="card-body">
+                        <h5 class="card-title"> Special title treatment</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+
+                        <div style="display:flex;">
+                            <follow-b user-id="{{ $user->id }}" follows="{{ $follows }}"> </follow-b>
+                            <!--ここでボタン伝いでskaywayidを渡したい！-->
+                            <!--make-call-->
+                            <!--my-id.value should be assigned to value -->
+                            <!--in script.js, get the value , then insert it into value of thier-id-->
+                            <button id="make-call" 
+                                type="button" 
+                                class="btn btn-success" 
+                                style="margin-left: 10px; background: #3b7ea1; border-color:#3b7ea1; color:#fdb515;" 
                                 value="{{ $user->id }}"
                                 onclick='(function(){
                                     console.log({{ $user->id }})
                                     $("#friends-box").hide()
                                     $("#outline-box").show()
                                 })()'
-                                >Lets talk</button>
+                                >Make call</button>
                         </div>
 
                     </div>

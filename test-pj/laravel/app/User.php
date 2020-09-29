@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Mail;
 use Laravel\Passport\HasApiTokens;
+use Illuminate\Support\Facades\Cache;
 
 class User extends Authenticatable
 {
@@ -72,5 +73,11 @@ class User extends Authenticatable
 
     // here posts is not singuler, differing from profile , why? 
     // cus you ll have many posts into ONE user MANY TO MANY
+
+    public function isOnline()
+    {
+        return Cache::has('user-is-online' . $this->id);
+    }
+
     
 }

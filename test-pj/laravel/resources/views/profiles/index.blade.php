@@ -4,7 +4,7 @@
 <div class="container">
    <div class="row">
        <div class="col-3 p-5">
-            <img src="{{ $user->profile[0]->profileImage() }}" class="rounded-circle w-100" >
+            <img src="{{ asset($user->profile[0]->profileImage()) }}" class="rounded-circle w-100" >
        </div>
        <div class="col-9 pt-5">
        <!--what are you doing now is same as user.username in js-->
@@ -15,7 +15,7 @@
             </div>
 
         @can('update', $user->profile[0])
-            <a href="/p/create">Add New Post</a>
+            <a href="{{ url('/p/create') }}">Add New Post</a>
         @endcan
 
         </div>

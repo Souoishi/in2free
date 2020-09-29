@@ -119,7 +119,6 @@ class ProfilesController extends Controller
         $debateTopics =  \App\Debate_topics::all();
         $numOfTopics = count($debateTopics);
         $randomIndex = rand(0, $numOfTopics);
-
         $userid = auth()->user()->id;
         $users = \App\User::all();
         $follows = (auth()->user()) ? auth()->user()->following->contains($user->id) : false;

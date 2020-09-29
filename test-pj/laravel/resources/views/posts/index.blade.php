@@ -3,13 +3,14 @@
 @section('content')
 
 <div class="container">
-
+    <div class="journal-page-title">
+        <h1>Share your English journal</h1>
+    </div>
     @foreach($posts as $post)
         <div class="row pt-2 pb-4">
             <div class="col-10 offset-1"> 
             <post-card post_info="{{ $post }}" page="sns"></post-card>
                     <!--<img src="/storage/{{ $post->image }}" class="w-100">-->
-                
             </div>
         </div>
 
