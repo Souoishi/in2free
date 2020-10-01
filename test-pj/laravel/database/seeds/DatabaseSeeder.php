@@ -87,19 +87,19 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'topic' => 'should students are alllowed to use electric deveices (laptop ,  pad, smart phone ) in lecture? ',
-                'category' => 'eucation',
+                'category' => 'education',
             ],
             [
                 'topic' => 'is online school better than onsite school(traditional ones)?',
-                'category' => 'eucation',
+                'category' => 'education',
             ],
             [
                 'topic' => 'should programming courses be a compulsory subject in primary or middle school ?',
-                'category' => 'eucation',
+                'category' => 'education',
             ],
             [
                 'topic' => 'Does joining to sport club help student ?  In what ways and how ?',
-                'category' => 'eucation',
+                'category' => 'education',
             ]
         ]);
     }

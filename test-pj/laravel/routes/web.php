@@ -39,6 +39,17 @@ Route::patch('/profile/{user}', 'ProfilesController@update')->name('profile.upda
 Route::get('/shared/{user}', 'ProfilesController@show')->name('shared.debate');
 Route::get('/shared', 'SharedController@index')->name('shared.friends');
 
+// shared & topics
+Route::get('/topics', 'TopicController@index')->name('shared.topiccatalog');
+// これで１トピックごとのページへ飛ぶ。飛んだ先ではアウトラインを紐付ける、トピック毎にurlをつける
+Route::get('/topics/{topic_id}', 'TopicController@show')->name('shared.topiccatalog');
+Route::get('/topic-register', 'TopicController@store');
+
+
+// outlines
+Route::post('/outline', 'OutlineController@store');
+
+
 Route::get('/graph/', function() {
     return view('graph.graph');
 });
