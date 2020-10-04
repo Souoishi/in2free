@@ -126,6 +126,10 @@ hr {
 }
 
 
+.word-card {
+    margin: 10px;
+} 
+
 
 
 /*topiccatalog page */
@@ -140,9 +144,33 @@ hr {
 }
 
 
-.category-list {
+.category-list{
     
     overflow-x: auto;
     white-space: nowrap;
 }
+
 .category-list::-webkit-scrollbar {    display: none;}
+
+.outline-forums{
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.words-forums{
+    overflow-x: auto;
+    white-space: nowrap;
+}
+.words-forums::-webkit-scrollbar {    display: none;}
+
+
+.outline-forums-user{
+    overflow-x: auto;
+    white-space: nowrap;
+}
+.outline-forums-user::-webkit-scrollbar {    display: none;}
+
+.alert {
+    display: inline-block;
+    margin: 0 auto;
+}

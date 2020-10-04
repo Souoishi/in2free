@@ -8,9 +8,20 @@
 
             <div class="card">
                 <div class="card-header">
-                    <a href="/profile/{{ $user->id }}" > 
+                    
                         <span class=“text-dark”> {{ $user->username }} </span> 
-                    </a>
+                        @if($user->isOnline())
+                            
+                            <li class="text-success">
+                                Online
+                            </li>
+                        @else
+                        
+                            <li class="text-muted">
+                                Offline
+                            </li>
+                        @endif
+                    
                 </div>
                 <div class="">
                     <div class="d-flex"> 
@@ -19,7 +30,7 @@
                         <div class="card-body">
                             <h5 class="card-title"> Special title treatment</h5>
                             <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                            <button type="button" class="btn btn-success"> Let's discuss </button>
+                            <a id="see-detail" role="button" class="btn btn-primary" href="/profile/{{ $user->id }}" style="background: #3b7ea1; border-color:#3b7ea1; color:#fdb515; margin-right:10px">see current activities</a>
                         </div>
                     </div>
                 </div>

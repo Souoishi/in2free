@@ -40,7 +40,9 @@ class OutlineController extends Controller
         // $outlineinfo->support3 = request('support3');
         // $outlineinfo->detail3 = request('detail3');
         //dd($outlineinfo);
-        return redirect('/profile/'. auth()->user()->id );
-        
+        //return redirect('/profile/'. auth()->user()->id );
+        return view('posts.create');
     }
+        
+    
 }

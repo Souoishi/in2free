@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Topic;
+use App\Debate_topics;
 
 class TopicController extends Controller
 {
@@ -34,5 +34,26 @@ class TopicController extends Controller
         
         // compact do the exactly same thing as we did in auth->user->posts()->create...
         return view('shared.topiccatalog', compact('topiccatalog', 'outlines'));
+    }
+
+    public function show(Debate_topics $debate_topics) 
+    {
+        $outlines =  \App\Outline::all();
+        $users = \App\User::all();
+        // compact do the exactly same thing as we did in auth->user->posts()->create...
+        return view('shared.showoutline', compact('debate_topics', 'outlines','users'));
+    }
+
+    public function custom(Debate_topics $debate_topics) {
+        $whichPage = "selected";
+        $selected_category = $debate_topics->category;
+        $selected_topic = $debate_topics->topic;
+        $indexOfTopic = $debate_topics->id;
+        $userid = auth()->user()->id;
+        $users = \App\User::all();
+        $user = auth()->user();
+        $follows = (auth()->user()) ? auth()->user()->following->contains($user->id) : false;
+        
+        return view('shared.debate', compact('userid','follows','users','user','selected_topic', 'whichPage','indexOfTopic','selected_category'));
     }
 }

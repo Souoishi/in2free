@@ -31,38 +31,32 @@ class PostsController extends Controller
     }
 
 
-    public function create()
-    {
-        return view('posts.create');
-    }
+    
+
+
     public function store()
     {
         // here validate all the given data from the form
         // inside of this func, put all obj-key you wanna validate e.g. required 
         
-        // dd(request()['short-blog']);
-        $data = request()->validate([
-             'caption' => 'required',
-             'short_blog' => 'required',
-
-        ]);
-        // dd($data);
+        
     
         // $data = request()->validate([
         //     'caption' => 'required',
         //     'line' => 'required'
         
+
         // ]);
         // STORE func of Upload func:
         // image is instance of "uploadfile", which has lot a function, we use store function from it
         // the 1st parm is the path (directry) where you wanna store, 2nd parm is which DRIVER you wanna use to store
             // 'public'-> our local storage
         // end up getting path to the image    
-        $imagePath = request('image')->store('uploads', 'public');
+        // $imagePath = request('image')->store('uploads', 'public');
 
         // // after you add composer require intervention/image
-        $image = Image::make(public_path("storage/{$imagePath}"))->fit(1200, 1200);
-        $image->save();
+        // $image = Image::make(public_path("storage/{$imagePath}"))->fit(1200, 1200);
+        // $image->save();
 
 
         // we need to save user_id here to fit to post table structure on the migration file
@@ -74,13 +68,15 @@ class PostsController extends Controller
         // why you can get user_id correctly? cus auth get only authentificated user
         // this below funcs are MODEL. 
         auth()->user()->posts()->create([
-            'caption' => $data['caption'],
-            'short_blog' => $data['short_blog'],
-            'image' => $imagePath,
+            'jp_expression' => request('jp_expression'),
+            'eg_expression' => request('eg_expression'),
+            'topic_id' => request('topic_id'),
+            'card_topic' => request('card_topic'),
+            'exmp' => request('exmp')
         ]);
 
-
-        return redirect('/profile/'. auth()->user()->id );
+            // ここでdebate に戻す！　with all posts of the user
+        return redirect('/shared/'. auth()->user()->id );
         
     }
     // before you put \App\Post , the $post just get "getvalue on browser (id) from index.blade.php"

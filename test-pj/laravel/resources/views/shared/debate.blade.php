@@ -1,35 +1,81 @@
 @extends('layouts.app')
 
 @section('content')
-
-<div class="video-container">
+@if ($whichPage === "random")
+<div class="video-container" >
+    <input id="which-page" value="{{$whichPage}}" style="display:none">
     <h1 class="debate-wating-room title"> Practice your speaking </h1>
 
+    
+    <!--<button id ='start-practice' type="button" class="btn btn-primary" style="background: #3b7ea1; border-color:#3b7ea1; color:#fdb515; margin-right:10px">Start practice</button>-->
         <!-- video-chat screen -->
-    <div class="time-zone">
+    <div id="time-zone" class="time-zone" >
         <p id="RealtimeClockArea" class="border-bottom"></p><!--#3b7ea1   #fdb515-->
                 <button id ='start' type="button" class="btn btn-primary" style="background: #3b7ea1; border-color:#3b7ea1; color:#fdb515; margin-right:10px">Fire up</button>
-                <button id ='stop' type="button" class="btn btn-primary" style="background: #C4820E; border-color:#C4820E; color:white">Stop</button>
+                <!--<button id ='stop' type="button" class="btn btn-primary" style="background: #C4820E; border-color:#C4820E; color:white">Stop</button>-->
         <!-- header -->
         <div class="topic-box">
             
 
-            <div class="card-body">
+            <div id="card-body" class="card-body">
                 <input id="topic" value="{{$debateTopics[$randomIndex]['topic']}}" style="display:none">
+                <!--<h1 id="topic-display" class="card-title border-bottom"> {{$debateTopics[$randomIndex]['topic']}} </h1>-->
+                <h1 id="topic-display" class="card-title border-bottom"> </h1>
                 <input id="topicInd" value="{{ $randomIndex + 1}}" style="display:none">
-                <h1 id="topic-display" class="card-title border-bottom"></h1>
+                <!--<h1 id="topic-display" class="card-title border-bottom"></h1>style="display:none"-->
                 <!-- TOPIC : {{$debateTopics[$randomIndex]['topic']}} -->
                 <p class="card-text">
                 Category: {{$debateTopics[$randomIndex]['category']}}<br>
                 </p>
             </div>
+            <button id ='try-again' type="button" class="btn btn-primary" style="background: #C4820E; border-color:#C4820E; color:white">Try again</button>
+            <a id="next-topic" 
+                role="button" 
+                class="btn btn-primary" 
+                href="/shared/{{$user->id}}" 
+                style="background: #3b7ea1; border-color:#3b7ea1; color:#fdb515; margin-right:10px"
+                onclick='(function(){
+                    localStorage.removeItem("topicInd")
+                    localStorage.removeItem("phaseInd")
+                })()'
+            >Go to next topic</a>
         </div>
     </div>
 
+    
+@else
+    <div class="selected-video-container">
+    <input id="which-page2" value="{{$whichPage}}" style="display:none">
+        <h1 class="debate-wating-room title"> Practice your speaking </h1>
+
+            <!-- video-chat screen -->
+        <div id="selected-time-zone" class="selected-time-zone" >
+            <p id="RealtimeClockArea" class="border-bottom"></p><!--#3b7ea1   #fdb515-->
+                    <button id ='start' type="button" class="btn btn-primary" style="background: #3b7ea1; border-color:#3b7ea1; color:#fdb515; margin-right:10px">Fire up</button>
+                    <!--<button id ='stop' type="button" class="btn btn-primary" style="background: #C4820E; border-color:#C4820E; color:white">Stop</button>-->
+            <!-- header -->
+            <div class="topic-box">
+            
+
+                <div id="selected-card-body" class="card-body">
+                    <input id="selected-topic" value="{{$selected_topic}}" style="display:none">
+                    <!--<h1 id="selected-topic-display"class="card-title border-bottom"> {{$selected_topic}} </h1>-->
+                    <h1 id="selected-topic-display"class="card-title border-bottom"> </h1>
+                    <input id="selected-dbtopic_id" value="{{ $indexOfTopic }}" style="display:none">
+                    <!--<h1 id="topic-display" class="card-title border-bottom"></h1>-->
+                    
+                    <p class="card-text">
+                    Category: {{$selected_category}}<br>
+                    </p>
+                </div>
+                <button id ='try-again' type="button" class="btn btn-primary" style="background: #C4820E; border-color:#C4820E; color:white">Try again</button>
+                <a id="go-back-catalog" role="button" class="btn btn-primary" href="/topics" style="background: #3b7ea1; border-color:#3b7ea1; color:#fdb515; margin-right:10px">Go back to catalog</a>
+            </div>
+        </div>
+
+    
+@endif
     <div class="debate-grid">
-
-
-
         
         
 
@@ -69,77 +115,46 @@
 
     <!--<profile-card :users="{{ $user }}" >
     <profile-card/>-->
-
-    @foreach($users as $user)
-    <!--嘘！！！ちゃんとここにも自分のカード出す！自分のユーザーIDを持ってるカードに、自分のIDをいれる！但し、CSSは隠す　display:none;-->
-        @if ($user->id !== $userid)
-        <div class="card">
-            <div class="card-header">
-                <a href="/profile/{{ $user->id }}" >
-                    <span class=“text-dark”> {{ $user->username }} </span>
-                    @if($user->isOnline())
-                    
-                        <li class="text-success">
-                            Online
-                        </li>
-                    @else
-                    
-                        <li class="text-muted">
-                            Offline
-                        </li>
-                    @endif
-                </a>
+    <form action="/p" enctype="multipart/form-data" method="post">
+        @csrf
+        <div class="word-card card mb-3" style="border-color:#3b7ea1;">
+            <input id="topic_id" name="topic_id" value="" style="display:none">
+            <input id="card_topic"  name="card_topic" value="" style="display:none">
+            <div class="form-group" style="margin: 10px">
+                <label for="jp_expression">Japanese Expression</label>
+                <input type="text" class="form-control" id="jp_expression" name="jp_expression" aria-describedby="emailHelp" placeholder="Enter Jp expression you wanted to say in English">
             </div>
-            <div class="">
-                <div class="d-flex">
-                    <img src="{{ $user->profile[0]->profileImage() }}" class="rounded-circle" style="width: 10rem; margin:1rem;">
-
-                    <div class="card-body">
-                        <h5 class="card-title"> Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-
-                        <div style="display:flex;">
-                            <follow-b user-id="{{ $user->id }}" follows="{{ $follows }}"> </follow-b>
-                            <!--ここでボタン伝いでskaywayidを渡したい！-->
-                            <!--make-call-->
-                            <!--my-id.value should be assigned to value -->
-                            <!--in script.js, get the value , then insert it into value of thier-id-->
-                            <button id="make-call" 
-                                type="button" 
-                                class="btn btn-success" 
-                                style="margin-left: 10px; background: #3b7ea1; border-color:#3b7ea1; color:#fdb515;" 
-                                value="{{ $user->id }}"
-                                onclick='(function(){
-                                    console.log({{ $user->id }})
-                                    $("#friends-box").hide()
-                                    $("#outline-box").show()
-                                })()'
-                                >Make call</button>
-                        </div>
-
-                    </div>
-                </div>
+            <div class="form-group" style="margin: 10px">
+                <label for="eg_expression">English Expression</label>
+                <input type="text" class="form-control" id="eg_expression" name="eg_expression" aria-describedby="emailHelp" placeholder="Enter Eg expression fitting to the context">
             </div>
+
+            <div class="form-group" style="margin: 10px">
+                <label for="exmp">Example sentense</label>
+                <textarea class="form-control" id="exmp" name="exmp" rows="3"></textarea>
+                <small id="emailHelp" class="form-text text-muted">make sentense you want to use in this practice</small>
+            </div>
+            
         </div>
-
-        @endif
-
-    @endforeach
-
-
-    <div class="row">
-
-        <div class="col-12 d-flex justify-content-center">
-            <!--$user->links-->
-        </div>
-
-    </div>
+        <button 
+            id="word-regisration" 
+            class="btn"
+            style="background: #3b7ea1; border-color:#3b7ea1; color:#fdb515; margin:10px"
+            onclick='(function(){
+                    
+                    $("#topic_id").val(localStorage.getItem("topicInd"))
+                    $("#card_topic").val(localStorage.getItem("topic"))
+                })()'
+            >Add New Post</button>
+        
+    </form>
+    
 </div>
 <!--int_debate button を押した後、以下のoutlineを出す-->
 
 
-<div id="outline-box" class="outline-box" style="display:none">
-<div class="jumbotron">
+<div id="outline-box" class="outline-box">
+<div class="jumbotron" style="background: #3b7ea1; border-color:#3b7ea1; color:#fdb515; margin:10px">
     <h1 class="col-sm-10"> Create your Outline </h1>
 
             
@@ -147,7 +162,7 @@
         @csrf
         <div class="form-group row">
             <!--topic id-->
-        <input type="number" class="form-control form-control-lg" id="dbtopic_id" name="dbtopic_id">
+        <input type="number" class="form-control form-control-lg" id="dbtopic_id" name="dbtopic_id" style="display:none;">
             <label for="inputPassword" class="col-sm-2 col-form-label">Take position</label> <span>
             <div class="col-sm-10">
                 <select class="custom-select mr-sm-2" id="position" name="position">
@@ -169,31 +184,31 @@
             <label for="inputPassword" class="col-sm-2 col-form-label">support 1</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" id="support1" name="support1" placeholder="reason or example">
-                <textarea rows="4" style="margin-top: 10px;" cols="50" id="detail1" name="detail1"></textarea>
+                <textarea rows="4" style="display:none; margin-top: 10px;" cols="50" id="detail1" name="detail1"></textarea>
             </div>
         </div>
         <div class="form-group row">
             <label for="inputPassword" class="col-sm-2 col-form-label">support 2</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" id="support2" name="support2" placeholder="reason or example">
-                <textarea rows="4" style="margin-top: 10px;" cols="50" id="detail2" name="detail2"></textarea>
+                <textarea rows="4" style="display:none; margin-top: 10px;" cols="50" id="detail2" name="detail2" style="display:none"></textarea>
             </div>
         </div>
         <div class="form-group row">
             <label for="inputPassword" class="col-sm-2 col-form-label">support 3</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" id="support3" name="support3" placeholder="reason or example">
-                <textarea rows="4" style="margin-top: 10px;" cols="50"  id="detail3" name="detail3" ></textarea>
+                <textarea rows="4" style="display:none; margin-top: 10px;" cols="50"  id="detail3" name="detail3" style="display:none"></textarea>
             </div>
         </div>
-        <button class="btn btn-primary">Add New Post</button>
+        <button class="btn" style="background: #C4820E; border-color:#C4820E; color:white">Add New Post</button>
     </form>
    
     
 </div>
 </div>
 
-<div id="thesis-card" class="thesis-card">
+<!--<div id="thesis-card" class="thesis-card">
     <div class="jumbotron">
         <h1 class="col-sm-10"> Create your thesis </h1>
 
@@ -240,7 +255,7 @@
     </form>
     </div>
     
-</div>
+</div>-->
 
 </div>
 

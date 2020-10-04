@@ -21,27 +21,28 @@
         </div>
 
         <div v-else>
-            <b-card
+            <b-card border-variant="info" class="mr-3 d-inline-block">
                 
-                v-bind:img-src="'@/storage/'+ postInfo.image"
-                img-alt="Image"
-                img-top
-                tag="article"
-                style="max-width: 20rem; margin: 1rem;"
-                class="mb-2"
-            >
+                <label for="card_topic">Related Topic</label>
+                <b-form-input :readonly="true" list="input-list" id="card_topic" v-bind:value="postInfo.card_topic"  class="w-responsive"></b-form-input>
                 
-                <h3> 
-                    {{ postInfo.caption }} 
-                </h3>
+                <label for="jp_expression">Japanese</label>
+                <b-form-input :readonly="true" list="input-list" id="jp_expression" v-bind:value="postInfo.jp_expression"></b-form-input>
                 
-                <hr> 
+                <label for="jp_expression">English</label>
+                <b-form-input :readonly="true" list="input-list" id="eg_expression" v-bind:value="postInfo.eg_expression"></b-form-input>
+                
+                <label for="jp_expression">Example</label>
+                <b-form-textarea
+                    :readonly="true"
+                    id="textarea"
+                    
+                    rows="3"
+                    max-rows="6"
+                    v-bind:value="postInfo.exmp"
+                ></b-form-textarea>
 
-                <b-card-text>
-                    {{ postInfo.short_blog }}
-                </b-card-text>
-
-                <b-button v-bind:href="'/p/'+ postInfo.user_id" variant="primary" style="background: #3b7ea1; border-color:#3b7ea1; color:#fdb515">Go details</b-button>
+                <b-button v-bind:href="'/p/'+ postInfo.user_id" variant="primary" style="background: #3b7ea1; border-color:#3b7ea1; color:#fdb515; margin-top:20px">Go details</b-button>
             </b-card>
         </div>
     </div>

@@ -14,9 +14,7 @@
                 <follow-b user-id="{{ $user->id }}" follows="{{ $follows }}"></follow-b> 
             </div>
 
-        @can('update', $user->profile[0])
-            <a href="{{ url('/p/create') }}">Add New Post</a>
-        @endcan
+        
 
         </div>
         <!--can here works exactly as authorize on ProfileController-->
@@ -34,26 +32,73 @@
 
        </div>
    </div>   
-   <div class="row pt-4">
-       
-        @foreach($user->posts as $post)
-             
-            <post-card post_info="{{ $post }}" page="profile"></post-card>
-            <!--<div class="col-4 pb-4">-->
-                <!--<a href="/p/{{ $post->id }}">-->
-                    
-                    <!--<img src="/storage/{{ $post->image }}" class="w-100">-->
-                    <!--sort this in order of updated_at-->
+   <!--<div class="row pt-4">-->
+    
+   <div class="text-center">
+            <div class="alert alert-info" role="alert">
+                <h4 class="alert-heading"> Word list </h4>
+            </div>
+    </div>
+        
+    
 
-                    <!--<p>Caption</p>-->
-                    <!--<p>{{ $post->caption }}</p>-->
-                    <!--<p>Short-blog</p>-->
-                    <!--how to limit the number of words and put ... at the end-->
-                    <!--<p>{{ $post->short_blog }}</p>-->
-                <!--</a>-->
-            <!--</div>-->
-          
-        @endforeach
+   <div class="container" style="display:flex; flex-direction:column; justify-content: center;">
+       
+        <input id="cards-of-user" style="display:none;" value="{{ $user->posts }}">
+        <div id="words-forums" class="words-forums"></div>
+            <!--@foreach($user->posts as $post)
+                
+                <post-card post_info="{{ $post }}" page="profile"></post-card>
+                <div class="col-4 pb-4">
+                    <a href="/p/{{ $post->id }}">
+                        
+                        <img src="/storage/{{ $post->image }}" class="w-100">
+                        sort this in order of updated_at
+
+                        <p>Caption</p>
+                        <p>{{ $post->caption }}</p>
+                        <p>Short-blog</p>
+                        how to limit the number of words and put ... at the end
+                        <p>{{ $post->short_blog }}</p>
+                    </a>
+                </div>
+            
+            @endforeach-->
+       
+   </div>
+    
+
+   <div class="text-center">
+
+        <div class="alert alert-info" role="alert">
+            <h4 class="alert-heading"> Outline list </h4>
+        </div>
+        
+    </div>
+
+   <div class="container" style="display:flex; flex-direction:column; justify-content: center;">
+       
+        <input id="outlines-of-user" style="display:none;" value="{{ $user->outlines }}">
+        <div id="outline-forums-user" class="outline-forums-user"></div>
+            <!--@foreach($user->posts as $post)
+                
+                <post-card post_info="{{ $post }}" page="profile"></post-card>
+                <div class="col-4 pb-4">
+                    <a href="/p/{{ $post->id }}">
+                        
+                        <img src="/storage/{{ $post->image }}" class="w-100">
+                        sort this in order of updated_at
+
+                        <p>Caption</p>
+                        <p>{{ $post->caption }}</p>
+                        <p>Short-blog</p>
+                        how to limit the number of words and put ... at the end
+                        <p>{{ $post->short_blog }}</p>
+                    </a>
+                </div>
+            
+            @endforeach-->
+       
    </div>
 </div>
 @endsection
