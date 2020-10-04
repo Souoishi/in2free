@@ -24,10 +24,23 @@ class OutlineController extends Controller
             'support3' => request('support3'),
             'detail3' => request('detail3')
         ]);
+
+        $whichPage = request('whichPage');
+        
+        $debateTopics = request('dammyTopic');
+        $randomIndex = request('dammyTopicId');
+        $selected_category = request('dammyCateg');
         
 
         
         
+        
+    
+        
+        $userid = auth()->user()->id;
+        $users = \App\User::all();
+        $user = auth()->user();
+        $follows = (auth()->user()) ? auth()->user()->following->contains($user->id) : false;
 
 
         // $outlineinfo->dbtopic_id = request('dbtopic_id');
@@ -41,7 +54,7 @@ class OutlineController extends Controller
         // $outlineinfo->detail3 = request('detail3');
         //dd($outlineinfo);
         //return redirect('/profile/'. auth()->user()->id );
-        return view('posts.create');
+        return view('shared.debate',compact('userid','follows','users','user','debateTopics', 'whichPage','randomIndex','selected_category'));
     }
         
     

@@ -152,6 +152,8 @@ hr {
 
 .category-list::-webkit-scrollbar {    display: none;}
 
+.outline-box::-webkit-scrollbar {    display: none;}
+
 .outline-forums{
     overflow-x: auto;
     white-space: nowrap;

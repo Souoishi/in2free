@@ -18,14 +18,14 @@
             
 
             <div id="card-body" class="card-body">
-                <input id="topic" value="{{$debateTopics[$randomIndex]['topic']}}" style="display:none">
-                <!--<h1 id="topic-display" class="card-title border-bottom"> {{$debateTopics[$randomIndex]['topic']}} </h1>-->
+                <input id="topic" value="{{$debateTopics}}" style="display:none">
+                
                 <h1 id="topic-display" class="card-title border-bottom"> </h1>
                 <input id="topicInd" value="{{ $randomIndex + 1}}" style="display:none">
-                <!--<h1 id="topic-display" class="card-title border-bottom"></h1>style="display:none"-->
-                <!-- TOPIC : {{$debateTopics[$randomIndex]['topic']}} -->
+                
+                <input type="text" id="category" name="category" value="{{$selected_category}}" style="display:none;">
                 <p class="card-text">
-                Category: {{$debateTopics[$randomIndex]['category']}}<br>
+                Category: {{$selected_category}}<br>
                 </p>
             </div>
             <button id ='try-again' type="button" class="btn btn-primary" style="background: #C4820E; border-color:#C4820E; color:white">Try again</button>
@@ -49,7 +49,7 @@
         <h1 class="debate-wating-room title"> Practice your speaking </h1>
 
             <!-- video-chat screen -->
-        <div id="selected-time-zone" class="selected-time-zone" >
+        <div id="selected-time-zone" class="time-zone" >
             <p id="RealtimeClockArea" class="border-bottom"></p><!--#3b7ea1   #fdb515-->
                     <button id ='start' type="button" class="btn btn-primary" style="background: #3b7ea1; border-color:#3b7ea1; color:#fdb515; margin-right:10px">Fire up</button>
                     <!--<button id ='stop' type="button" class="btn btn-primary" style="background: #C4820E; border-color:#C4820E; color:white">Stop</button>-->
@@ -58,12 +58,12 @@
             
 
                 <div id="selected-card-body" class="card-body">
-                    <input id="selected-topic" value="{{$selected_topic}}" style="display:none">
-                    <!--<h1 id="selected-topic-display"class="card-title border-bottom"> {{$selected_topic}} </h1>-->
+                    <input id="selected-topic" value="{{$debateTopics}}" style="display:none">
+                   
                     <h1 id="selected-topic-display"class="card-title border-bottom"> </h1>
-                    <input id="selected-dbtopic_id" value="{{ $indexOfTopic }}" style="display:none">
+                    <input id="selected-dbtopic_id" value="{{ $randomIndex }}" style="display:none">
                     <!--<h1 id="topic-display" class="card-title border-bottom"></h1>-->
-                    
+                    <input type="text" id="selected-category" name="selected-category" value="{{$selected_category}}" style="display:none;">
                     <p class="card-text">
                     Category: {{$selected_category}}<br>
                     </p>
@@ -118,6 +118,12 @@
     <form action="/p" enctype="multipart/form-data" method="post">
         @csrf
         <div class="word-card card mb-3" style="border-color:#3b7ea1;">
+            <input type="text" id="wordDammyTopic" name="wordDammyTopic" style="display:none;">
+            <input type="text" id="wordDammyCateg" name="wordDammyCateg" style="display:none;">
+            <input type="text" id="wordDammyTopicId" name="wordDammyTopicId" style="display:none;">
+            <input type="text" id="wordwhichPage" name="wordwhichPage" style="display:none;">
+
+
             <input id="topic_id" name="topic_id" value="" style="display:none">
             <input id="card_topic"  name="card_topic" value="" style="display:none">
             <div class="form-group" style="margin: 10px">
@@ -161,6 +167,10 @@
     <form action="/outline" enctype="multipart/form-data" method="post">
         @csrf
         <div class="form-group row">
+        <input type="text" id="dammyTopic" name="dammyTopic" style="display:none;">
+        <input type="text" id="dammyCateg" name="dammyCateg" style="display:none;">
+        <input type="text" id="dammyTopicId" name="dammyTopicId" style="display:none;">
+        <input type="text" id="whichPage" name="whichPage" style="display:none;">
             <!--topic id-->
         <input type="number" class="form-control form-control-lg" id="dbtopic_id" name="dbtopic_id" style="display:none;">
             <label for="inputPassword" class="col-sm-2 col-form-label">Take position</label> <span>

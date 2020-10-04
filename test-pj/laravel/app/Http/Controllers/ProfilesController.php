@@ -117,13 +117,17 @@ class ProfilesController extends Controller
     {
         // $user = $user::all();
         $whichPage = "random";
-        $debateTopics =  \App\Debate_topics::all();
-        $numOfTopics = count($debateTopics);
+        $Topics =  \App\Debate_topics::all();
+        $numOfTopics = count($Topics);
         $randomIndex = rand(0, $numOfTopics);
+        $Topics = $Topics[$randomIndex];
+        
+        $debateTopics = $Topics['topic'];
+        $selected_category = $Topics['category'];
         $userid = auth()->user()->id;
         $users = \App\User::all();
         $follows = (auth()->user()) ? auth()->user()->following->contains($user->id) : false;
         // compact do the exactly same thing as we did in auth->user->posts()->create...
-        return view('shared.debate', compact('user', 'users', 'userid', 'follows', 'debateTopics', 'randomIndex', 'whichPage'));
+        return view('shared.debate', compact('user', 'users', 'userid', 'follows', 'debateTopics', 'randomIndex', 'whichPage','selected_category'));
     }
 }

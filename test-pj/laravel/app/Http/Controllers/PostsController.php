@@ -75,9 +75,21 @@ class PostsController extends Controller
             'exmp' => request('exmp')
         ]);
 
-            // ここでdebate に戻す！　with all posts of the user
-        return redirect('/shared/'. auth()->user()->id );
+        $whichPage = request('wordwhichPage');
+        $debateTopics = request('wordDammyTopic');
+        $randomIndex = request('wordDammyTopicId');
+        $selected_category = request('wordDammyCateg');
         
+        $userid = auth()->user()->id;
+        $users = \App\User::all();
+        $user = auth()->user();
+        $follows = (auth()->user()) ? auth()->user()->following->contains($user->id) : false;
+
+
+ 
+            // ここでdebate に戻す！　with all posts of the user
+        //return view('shared.debate',compact('userid','follows','users','user','selected_topic', 'whichPage','indexOfTopic','selected_category'));
+        return view('shared.debate',compact('user', 'users', 'userid', 'follows', 'debateTopics', 'randomIndex', 'whichPage','selected_category'));
     }
     // before you put \App\Post , the $post just get "getvalue on browser (id) from index.blade.php"
     // But once you put them, $post FETCH post function (model) that automatically fetch attributes

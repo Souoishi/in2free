@@ -398,148 +398,279 @@ window.onload = function(){
 
 speech.start() 
 
-// topic extraction
+    // topic extraction
+    if (pageJudgement() === "selected") {
+        
+        prevPage =  localStorage.getItem("prevPage")
+        console.log(prevPage)
+        displayTopic = document.getElementById('selected-topic-display')
+        displayId = '#selected-topic-display'
+
+        //topic = document.getElementById('selected-topic').value
+        topic = localStorage.getItem("topic")
+
+        //topicInd = document.getElementById('selected-dbtopic_id').value
+        topicInd = localStorage.getItem("topicInd")
+        //localStorage.setItem('topic', topic)
+        //localStorage.setItem('topicInd', topicInd)
+        phaseInd = Number(localStorage.getItem("phaseInd"))
+        
 
 
 
-    phaseInd = Number(localStorage.getItem("phaseInd"))
-    topic =  localStorage.getItem("topic")
-    topicInd = localStorage.getItem("topicInd")
-    console.log(topicInd)
-    console.log(topic)
+        dammyCategory = emptyChecker('selected-category')
+
+        $('dammyCateg').val('')
+        $('dammyCateg').val(dammyCategory)
+
+        $('dammyTopic').val('')
+        $('dammyTopicId').val('')
+        $('dammyTopic').val(topic)
+        $('dammyTopicId').val(topicInd)
+        
+
+        $('#whichPage').val("")
+        $('#whichPage').val("selected")
 
 
-    var displayObject = timeAsigner(phaseInd,time)
-    comment = displayObject.comment
-    var displayTobeContinue = document.getElementById('RealtimeClockArea');
-    displayTobeContinue.innerHTML = comment;
-
-    if (phaseInd >= 2) {
-        //$("#thesis-card").hide()
-        //clearThesis()
-        //$("#outline-box").show()
-        $("#detail1").show()
-        $("#detail2").show()
-        $("#detail3").show()
-    } else if (phaseInd < 2) {
-        //$("#thesis-card").hide()
-        //clearThesis()
-        //$("#outline-box").show()
-        $("#detail1").hide()
-        $("#detail2").hide()
-        $("#detail3").hide()
-    } 
 
 
-    if (phaseInd === 0 && !topicInd){
+        $('#wordDammyCateg').val('')
+        $('#wordDammyCateg').val(dammyCategory)
+
+        $('#wordDammyTopic').val('')
+        $('#wordDammyTopic').val(topic)
+
+        $('#wordDammyTopicId').val('')
+        $('#wordDammyTopicId').val(topicInd)
+        
+
+        $('#wordwhichPage').val("")
+        $('#wordwhichPage').val("selected")
+
+
+
+
+        if (prevPage === "random") {
             
-        localStorage.setItem('phaseInd',phaseInd)
-        clearOutline()
-        localStorage.removeItem('outline')
-        // topic を新しいものに→ローカルへ
-            // topic入手元 
-        if (pageJudgement() === "selected") {
-            displayTopic = document.getElementById('selected-topic-display')
-            displayId = '#selected-topic-display'
-
+            localStorage.setItem('prevPage', "selected")
+            localStorage.setItem('phaseInd', 0)
             topic = document.getElementById('selected-topic').value
             topicInd = document.getElementById('selected-dbtopic_id').value
             localStorage.setItem('topic', topic)
             localStorage.setItem('topicInd', topicInd)
-            
+            showTopic('show')
 
+        } else if (phaseInd >= 1){
+            
+            
+            retrive()
+        
+            
+        }
+        if (phaseInd >= 2) {
+            //$("#thesis-card").hide()
+            //clearThesis()
+            //$("#outline-box").show()
+            $("#detail1").show()
+            $("#detail2").show()
+            $("#detail3").show()
+        } else if (phaseInd < 2) {
+            //$("#thesis-card").hide()
+            //clearThesis()
+            //$("#outline-box").show()
+            $("#detail1").hide()
+            $("#detail2").hide()
+            $("#detail3").hide()
+        } 
+
+        var displayObject = timeAsigner(phaseInd,time)
+        comment = displayObject.comment
+        var displayTobeContinue = document.getElementById('RealtimeClockArea');
+        displayTobeContinue.innerHTML = comment;
+
+
+        displayTopic.innerHTML = topic
+        showTopic('show')
+        $(displayId).show()
+
+        if (phaseInd > 3) {
+            showTopic('hide')
         } else {
+            showTopic('show')
+        }
+    
+
+    } else {
+        prevPage =  localStorage.getItem("prevPage")
+
+
+        if (prevPage === "selected") {
+            
+            localStorage.setItem('prevPage', "random")
+            localStorage.setItem('phaseInd', 0)
+            topic = document.getElementById('topic').value
+            topicInd = document.getElementById('topicInd').value
+            localStorage.setItem('topic', topic)
+            localStorage.setItem('topicInd', topicInd)
+
+        } 
+
+       
+        localStorage.setItem('prevPage', "random")
+        phaseInd = Number(localStorage.getItem("phaseInd"))
+        
+
+        
+
+
+        var displayObject = timeAsigner(phaseInd,time)
+        comment = displayObject.comment
+        var displayTobeContinue = document.getElementById('RealtimeClockArea');
+        displayTobeContinue.innerHTML = comment;
+
+        if (phaseInd >= 2) {
+            //$("#thesis-card").hide()
+            //clearThesis()
+            //$("#outline-box").show()
+            $("#detail1").show()
+            $("#detail2").show()
+            $("#detail3").show()
+        } else if (phaseInd < 2) {
+            //$("#thesis-card").hide()
+            //clearThesis()
+            //$("#outline-box").show()
+            $("#detail1").hide()
+            $("#detail2").hide()
+            $("#detail3").hide()
+        } 
+
+
+        if (phaseInd === 0 && !topicInd){
+                
+            localStorage.setItem('phaseInd',phaseInd)
+            clearOutline()
+            localStorage.removeItem('outline')
+            // topic を新しいものに→ローカルへ
+                // topic入手元 
+            
             displayTopic = document.getElementById('topic-display')
             displayId = '#topic-display'
 
 
             topic = document.getElementById('topic').value
             topicInd = document.getElementById('topicInd').value
-            console.log(topicInd)
-            localStorage.setItem('topic', topic)
-            localStorage.setItem('topicInd', topicInd)
+
+            
+            
+            
+            
+            //displayTopic.innerHTML = topic
+            //$(displayId).show()
+            //$("#thesis-card").show()
+            
+        
+        } else if (phaseInd >= 1){
+        
+            //topic =  localStorage.getItem('topic');
+            
+            topic =  localStorage.getItem("topic")
+            topicInd = localStorage.getItem("topicInd")
+            retrive()
+            //displayTopic = document.getElementById('topic-display')
+            //displayTopicInd = document.getElementById('dbtopic_id').value
+            
+
+            //topicInd = document.getElementById('topicInd').value
+            //topicInd = emptyChecker('topicInd')
+            // topicInd =  localStorage.getItem('topicInd')
+            
+            // localStorage.setItem('topicInd', topicInd)
+            
             
         }
-        
-        
-        //displayTopic.innerHTML = topic
-        //$(displayId).show()
-        //$("#thesis-card").show()
-        
-       
-    } else if (phaseInd >= 1){
-       
-        //topic =  localStorage.getItem('topic');
-        
-        
-        retrive()
-        //displayTopic = document.getElementById('topic-display')
-        //displayTopicInd = document.getElementById('dbtopic_id').value
+        dammyCategory = emptyChecker('category')
+
+        $('#whichPage').val("")
+        $('#whichPage').val("random")
+
+        $('dammyCateg').val('')
+        $('dammyCateg').val(dammyCategory)
+
+        $('dammyTopic').val('')
+        $('dammyTopicId').val('')
+        $('dammyTopic').val(topic)
+        $('dammyTopicId').val(topicInd)
+
+
+
+
+        $('#wordDammyCateg').val('')
+        $('#wordDammyCateg').val(dammyCategory)
+
+        $('#wordDammyTopic').val('')
+        $('#wordDammyTopic').val(topic)
+
+        $('#wordDammyTopicId').val('')
+        $('#wordDammyTopicId').val(topicInd)
         
 
-        //topicInd = document.getElementById('topicInd').value
-        //topicInd = emptyChecker('topicInd')
-        // topicInd =  localStorage.getItem('topicInd')
+        $('#wordwhichPage').val("")
+        $('#wordwhichPage').val("random")
         
-        // localStorage.setItem('topicInd', topicInd)
+        localStorage.setItem('topic', topic)
+        localStorage.setItem('topicInd', topicInd)
+            
         
-        
-    }
-
-    if (pageJudgement() === "selected") {
-        displayTopic = document.getElementById('selected-topic-display')
-        displayId = '#selected-topic-display'
-
-    } else {
         displayTopic = document.getElementById('topic-display')
         displayId = '#topic-display'
-    }
 
-    displayTopic.innerHTML = topic
-    $(displayId).show()
-    
-        // phaseInd = Number(localStorage.getItem("phaseInd"));
-        // //check if this is the fitst round or not
-        // if (phaseInd === 0){
-        //     // まだストレージに入ってる一個前のやつ
-        //     topic =  localStorage.getItem('topic');
-            
-            
-        //     //$("#outline-box").show()
-        //     //$("#thesis-card").hide()
-        //     // here, dsa
-            
-        //     displayTopic.innerHTML = topic
-        //     displayTopicInd.value = topicInd
-        //     retrive()
-            
-        // } else if (phaseInd === 1) {
-        //     topic = localStorage.getItem("topic")
-        //     topicInd = localStorage.getItem("topicInd")
-        //     displayTopic.innerHTML = topic
 
-            
-        //     thesisRetrive()
-        // } else if (phaseInd === 2) {
+        displayTopic.innerHTML = topic
+        $(displayId).show()
+        
+            // phaseInd = Number(localStorage.getItem("phaseInd"));
+            // //check if this is the fitst round or not
+            // if (phaseInd === 0){
+            //     // まだストレージに入ってる一個前のやつ
+            //     topic =  localStorage.getItem('topic');
+                
+                
+            //     //$("#outline-box").show()
+            //     //$("#thesis-card").hide()
+            //     // here, dsa
+                
+            //     displayTopic.innerHTML = topic
+            //     displayTopicInd.value = topicInd
+            //     retrive()
+                
+            // } else if (phaseInd === 1) {
+            //     topic = localStorage.getItem("topic")
+            //     topicInd = localStorage.getItem("topicInd")
+            //     displayTopic.innerHTML = topic
 
-        //     retrive()
-        // } else if (phaseInd === 3) {
-        //     retrive()
-        // }
+                
+            //     thesisRetrive()
+            // } else if (phaseInd === 2) {
 
-        // if (phaseInd >= 2) {
+            //     retrive()
+            // } else if (phaseInd === 3) {
+            //     retrive()
+            // }
 
-        //     $("#thesis-card").hide()
-        //     $("#outline-box").show()
+            // if (phaseInd >= 2) {
 
-        // }
+            //     $("#thesis-card").hide()
+            //     $("#outline-box").show()
 
-    if (phaseInd > 3) {
-        showTopic('hide')
-    } else {
-        showTopic('show')
-    }
-    
+            // }
+
+        if (phaseInd > 3) {
+            showTopic('hide')
+        } else {
+            showTopic('show')
+        }
+    } 
 var start = document.getElementById('start');
 start.addEventListener('click' , count_start , false);
 // var stop = document.getElementById('stop');
@@ -846,7 +977,7 @@ let users = document.getElementById('users-for-topics')
 users = users && users.value;
 if ( users !== null) {
     users = JSON.parse(users)
-    console.log(users)
+   
 
     
     
@@ -929,7 +1060,7 @@ if ( cardsOfUserResult !== null) {
     
     cardsOfUser =  document.getElementById("cards-of-user").value
     cardsOfUser = JSON.parse(cardsOfUser)
-}
+
 
 
 
@@ -970,6 +1101,7 @@ if ( cardsOfUserResult !== null) {
         )
     }
 
+}
 
 var outlinePerUser = document.getElementById("outlines-of-user")
 outlinePerUserResult = outlinePerUser && outlinePerUser.value;
@@ -977,7 +1109,7 @@ if ( outlinePerUserResult !== null) {
     
     outlinePerUser =  document.getElementById("outlines-of-user").value
     outlinePerUser = JSON.parse(outlinePerUser)
-}
+
 
  
 
@@ -1026,7 +1158,7 @@ if ( outlinePerUserResult !== null) {
             </div>`
         )
     }
-
+}
 
 
 
@@ -1061,10 +1193,10 @@ $("#word-regisration").click(wordsinfoExtractor);
 let posts = []
 
 
-post = new Word(jp, en, ex)
-posts.push(post)
-posts = JSON.stringify(posts)
-localStorage.setItem('posts', posts)
+// post = new Word(jp, en, ex)
+// posts.push(post)
+// posts = JSON.stringify(posts)
+// localStorage.setItem('posts', posts)
 
 
 

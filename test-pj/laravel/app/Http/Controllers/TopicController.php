@@ -45,15 +45,18 @@ class TopicController extends Controller
     }
 
     public function custom(Debate_topics $debate_topics) {
+        $whichPage = request('whichPage');
+        
+        
         $whichPage = "selected";
         $selected_category = $debate_topics->category;
-        $selected_topic = $debate_topics->topic;
-        $indexOfTopic = $debate_topics->id;
+        $debateTopics = $debate_topics->topic;
+        $randomIndex = $debate_topics->id;
         $userid = auth()->user()->id;
         $users = \App\User::all();
         $user = auth()->user();
         $follows = (auth()->user()) ? auth()->user()->following->contains($user->id) : false;
         
-        return view('shared.debate', compact('userid','follows','users','user','selected_topic', 'whichPage','indexOfTopic','selected_category'));
+        return view('shared.debate', compact('userid','follows','users','user','debateTopics', 'whichPage','randomIndex','selected_category'));
     }
 }
