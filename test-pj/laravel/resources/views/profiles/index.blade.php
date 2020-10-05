@@ -77,7 +77,8 @@
     </div>
 
    <div class="container" style="display:flex; flex-direction:column; justify-content: center;">
-       
+   
+        <input id="topic-catalog" style="display:none;" value="{{ $Topics }}">
         <input id="outlines-of-user" style="display:none;" value="{{ $user->outlines }}">
         <div id="outline-forums-user" class="outline-forums-user"></div>
             <!--@foreach($user->posts as $post)

@@ -156,7 +156,7 @@ const timeAsigner =(phaseInd, time)=> {
         toBeContinue = '<h1>Great job!</h1>'
 
     }
-    console.log(time)
+    
 
     var displayObject = {
         time:  time,
@@ -527,7 +527,12 @@ speech.start()
         var displayObject = timeAsigner(phaseInd,time)
         comment = displayObject.comment
         var displayTobeContinue = document.getElementById('RealtimeClockArea');
-        displayTobeContinue.innerHTML = comment;
+        if (emptyChecker('RealtimeClockArea')){
+            
+            console.log(comment)
+            displayTobeContinue.innerHTML = comment;
+        }
+        
 
         if (phaseInd >= 2) {
             //$("#thesis-card").hide()
@@ -986,10 +991,12 @@ if ( users !== null) {
 let outlines = document.getElementById('outline-list')
 outlineResult = outlines && outlines.value;
 if ( outlineResult !== null) {
+   
     outlines =  document.getElementById('outline-list').value
     outlines = JSON.parse(outlines)
+   
     outlines = outlines.filter(outline => outline.dbtopic_id === t_id)
-
+  
 
     for (i = 0; i < outlines.length; i++) {
         
@@ -1003,7 +1010,7 @@ if ( outlineResult !== null) {
                 <div class="form-group row">
                     <label for="user_name${i}" class="col-sm-2 col-form-label"> Creator </label>
                     <div class="col-sm-10">
-                    <input type="text" readonly class="form-control form-control-lg" id="user_name${i}" name="user_name" value="${userName[0].name}" >
+                    <a href="/profile/${userName[0].id}"><input type="text" readonly class="form-control form-control-lg" id="user_name${i}" name="user_name" value="${userName[0].username}" ></a>
                     </div>
                 </div>
         
@@ -1110,23 +1117,27 @@ if ( outlinePerUserResult !== null) {
     outlinePerUser =  document.getElementById("outlines-of-user").value
     outlinePerUser = JSON.parse(outlinePerUser)
 
-
- 
-
+    topicCatalog = JSON.parse(document.getElementById("topic-catalog").value)
+    console.log(topicCatalog[0]['topic'])
+    
     for (i = 0; i < outlinePerUser.length; i++) {
         
-
+        
         $('#outline-forums-user').append( 
             `
             <div class="jumbotron"  style="display: inline-block; margin: 10px; border-color:#3b7ea1; background: #3b7ea1; color:#fdb515;">
 
-                
                 <div class="form-group row">
-                    <label for="user-position-read${i}" class="col-sm-2 col-form-label">Position</label> <span>
+                    <label for="user-topic-read${i}" class="col-sm-2 col-form-label">Topic</label> 
+                    <div class="col-sm-10">
+                    <input type="text" readonly class="form-control form-control-lg" id="user-topic-read${i}" name="user-position-read${i}" value="${topicCatalog[outlinePerUser[i].dbtopic_id]['topic']}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="user-position-read${i}" class="col-sm-2 col-form-label">Position</label>
                     <div class="col-sm-10">
                         <input type="text" readonly class="form-control form-control-lg" id="user-position-read${i}" name="user-position-read${i}" value="${outlinePerUser[i].position}">
                     </div>
-                    </span>
                 </div>
                 <div class="form-group row">
                     <label for="user-thesis-read${i}" class="col-sm-2 col-form-label">Thesis </label>
@@ -1190,13 +1201,11 @@ const wordsinfoExtractor = ()=>{
 $("#word-regisration").click(wordsinfoExtractor);
 
 
-let posts = []
 
 
-// post = new Word(jp, en, ex)
-// posts.push(post)
-// posts = JSON.stringify(posts)
-// localStorage.setItem('posts', posts)
+
+
+
 
 
 

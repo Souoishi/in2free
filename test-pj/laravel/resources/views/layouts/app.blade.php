@@ -27,7 +27,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
@@ -44,8 +44,8 @@
             <div class="container">
                 <a class="navbar-brand d-flex" href="{{ url('/') }}">
                     <!---<div><img src="/svg/freeCodeCampLogo.svg"></div>-->
-                    <div style="height: 25px; padding-right: 3px;"><i class="fab fa-adn"></i></div>
-                    <div style="padding-left: 3px; color:white;"><h3>In2free</h3></div>
+                    <!--<div style="height: 25px; padding-right: 3px;"><i class="fab fa-adn"></i></div>-->
+                    <div style="padding-left: 3px; color:white; font-family: 'Rock Salt', cursive;"><h3>In2free</h3></div>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -89,8 +89,11 @@
                                     </form>
                                     
                                     <a class="dropdown-item" href="{{ url('/profile/'.auth()->user()->id ) }}">Profile</a>
-                                    <a class="dropdown-item" href="{{ url('/shared/'.auth()->user()->id ) }}">Practice room</a>
-                                    <a class="dropdown-item" href="{{ url('/shared/')}}">Friends page</a>
+                                    <a class="dropdown-item" href="{{ url('/shared/'.auth()->user()->id ) }}">Random practice</a>
+                                    <a class="dropdown-item" href="{{ url('/topics') }}">Topic catalog</a>
+                                    <a class="dropdown-item" href="{{ url('/shared/')}}">Peer's posts</a>
+                                    <a class="dropdown-item" href="{{ url('/newfriends/')}}">Reach out new peers</a>
+                                    <a class="dropdown-item" href="{{ url('/')}}">Home</a>
                                 </div>
 
                                 

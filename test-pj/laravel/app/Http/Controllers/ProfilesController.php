@@ -43,7 +43,7 @@ class ProfilesController extends Controller
 
 
 
-
+        $Topics =  \App\Debate_topics::all();
 
         // to get actuall user data, we need lines below:
         // User -> model and fetching User data with THE keyword $user
@@ -54,7 +54,7 @@ class ProfilesController extends Controller
         // here we pass $user into home.php as attribute
         // on the ./view/home.php, you can recive the $user in {{}} 
         // you recive user from varuable of index, then pass it to $user
-        return view('profiles.index', compact('user', 'follows', 'postCount', 'followersCount', 'followingCount' ));
+        return view('profiles.index', compact('user', 'follows', 'postCount', 'followersCount', 'followingCount','Topics' ));
         // you can use compact here 
             //return view('profiles.index', compact('user'));
     }

@@ -4,7 +4,7 @@
 @if ($whichPage === "random")
 <div class="video-container" >
     <input id="which-page" value="{{$whichPage}}" style="display:none">
-    <h1 class="debate-wating-room title"> Practice your speaking </h1>
+    <h1 class="debate-wating-room title">  </h1>
 
     
     <!--<button id ='start-practice' type="button" class="btn btn-primary" style="background: #3b7ea1; border-color:#3b7ea1; color:#fdb515; margin-right:10px">Start practice</button>-->
@@ -46,7 +46,7 @@
 @else
     <div class="selected-video-container">
     <input id="which-page2" value="{{$whichPage}}" style="display:none">
-        <h1 class="debate-wating-room title"> Practice your speaking </h1>
+        <h1 class="debate-wating-room title">  </h1>
 
             <!-- video-chat screen -->
         <div id="selected-time-zone" class="time-zone" >

@@ -20,6 +20,7 @@ class PostsController extends Controller
         // this finds out the users that the authenticated user (logging in now) follows 
         // pluck helper method is used to retrieve a list of specific values from a given $array.
         $users = auth()->user()->following()->pluck('profiles.user_id');
+        $usersPicture = auth()->user()->following()->pluck('profiles.image');
         // Laravel provide wherein() to use sql wherein query. in wherein() we just need to pass two argument one is column name and another if array of ids or anything that you want.
         // shows all posts that the users the authenticated user following have posted
         // to order all post from latest one , adding order by = latest()
@@ -27,7 +28,7 @@ class PostsController extends Controller
             // when you loadig all over whereIn(), wanna load with "realtionship" with user that POST models has inside by itself
         $posts = Post::whereIn('user_id', $users)->with('user')->latest()->paginate(5);
         
-        return view('posts.index', compact('posts','users'));
+        return view('posts.index', compact('posts','users','usersPicture'));
     }
 
 

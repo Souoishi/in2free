@@ -24,7 +24,9 @@ Route::get('/email', function(){
 
 Route::post('/follow/{user}', 'FollowsController@store');
 
-Route::get('/', 'PostsController@index');
+
+Route::get('/', 'RouteController@index');
+Route::get('/shared', 'PostsController@index');
 Route::get('/p/create', 'PostsController@create');
 Route::get('/p/{post}', 'PostsController@show');
 Route::post('/p', 'PostsController@store');
@@ -37,7 +39,7 @@ Route::patch('/profile/{user}', 'ProfilesController@update')->name('profile.upda
 
 // shared pages
 Route::get('/shared/{user}', 'ProfilesController@show')->name('shared.debate');
-Route::get('/shared', 'SharedController@index')->name('shared.friends');
+
 
 Route::get('/newfriends', 'NewfriendsController@index')->name('shared.newfriends');
 
