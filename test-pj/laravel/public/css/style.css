@@ -181,6 +181,245 @@ hr {
 
 
 
-#app {
+/*ul*/
+.lists 
+{
+    position: fixed;
+    top:50%;
+    left: 0;
+    transform: translateY(-50%);
+    margin:0;
+    padding:0;
+    z-index: 1;
+    
+}
+/*li = menues*/
+.lists .menues 
+{
+    list-style:none;
+    color: white;
+}
+
+.lists .menues  a
+{
+    display:block;
+    text-decoration: none;
+    height: 30px;
+    line-height: 30px;
+    background: #0403FF;
+    width: 250px;
+    color: white;
+    margin: 4px 0;
+    
+    
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    opacity: 0.7;
+}
+
+.lists .catalogs a 
+{
+    display:block;
+    text-decoration: none;
+    height: 30px;
+    line-height: 30px;
+    background: #1FDEFF;
+    width: 250px;
+    color: white;
+    margin: 4px 0;
+    
+    
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    opacity: 0.7;
+}
+
+.lists .elem a 
+{
+    display:block;
+    text-decoration: none;
+    height: 30px;
+    line-height: 30px;
+    background: #1FDEFF;
+    width: 200px;
+    color: white;
+    margin: 4px 0;
+    
+    
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    opacity: 0.7;
+} 
+
+
+
+ul li a:hover
+{
+    transform: scale(1.1);
+}
+
+
+
+
+#container-topic
+{
+    width: 100%;
+    height: 100vh;
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+
+}
+
+
+#container-topic div#topic-register 
+{
+    position:relative;
+    width: 100%;
+    height: 100%;
+
+}
+#container-topic div#category-list
+{
+    position:relative;
+    width: 100%;
+    height: 100%;
+
+}
+
+/*'sports','politics', 'music', 'social issues','technology', 'education','others*/
+
+
+#category-list .category-card-economy
+{
+    background:url('../storage/catalog/economy.jpg') no-repeat center center fixed;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+
+#category-list .category-card-sports
+{
+    background:url('../storage/catalog/sports.jpg') no-repeat center center fixed;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+#category-list .category-card-politics
+{
+    background:url('../storage/catalog/politics.jpg') no-repeat center center fixed;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+#category-list .category-card-music
+{
+    background:url('../storage/catalog/music.jpg') no-repeat center center fixed;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+#category-list .category-card-social_issues
+{
+    background:url('../storage/catalog/social.jpg') no-repeat center center fixed;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+#category-list .category-card-technology
+{
+    background:url('../storage/catalog/tech.jpg') no-repeat center center fixed;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+#category-list .category-card-technology
+{
+    background:url('../storage/catalog/tech.jpg') no-repeat center center fixed;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+#category-list .category-card-education
+{
+    background:url('../storage/catalog/education.jpg') no-repeat center center fixed;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+#category-list .category-card-others
+{
+    background:url('../storage/catalog/others.jpg') no-repeat center center fixed;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+
+#topic-register {
+    text-align: center;
+    margin: auto;
+}
+
+#category-list div h1
+{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    color: white;
     font-family: 'Rock Salt', cursive;
+    font-size: 150px;
+    
+}
+
+
+#topic-list {
+    text-align: center;
+    margin: auto;
+}
+
+#topic-card{
+    text-decoration: none;
+}
+
+#category-list div h1:after,
+#category-list div h1:before {
+	content: '';
+  position: absolute;
+  left: 0;
+  display: inline-block;
+  height: 1em;
+  width: 100%;
+  margin-top: 10px;
+  opacity: 0;
+	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+	transition: opacity 0.35s, transform 0.35s;
+	
+}
+
+#category-list div h1:before {
+  border-left: 1px solid;
+  border-right: 1px solid;
+  -webkit-transform: scale(1,0);
+	transform: scale(1,0);
+}
+
+#category-list div h1:after {
+  border-bottom: 1px solid;
+  border-top: 1px solid;
+  -webkit-transform: scale(0,1);
+	transform: scale(0,1);
+}
+
+#category-list div h1:hover:after,
+#category-list div h1:hover:before {
+  opacity: 1;
+	-webkit-transform: scale(1);
+	transform: scale(1);
 }

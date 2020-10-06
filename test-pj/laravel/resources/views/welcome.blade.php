@@ -11,10 +11,6 @@
         
             
        <div class="container">
-            <ul>
-                <li><a href="#express_your_thought">express your thought</a></li>
-                <li><a href="#get_insight_from_others">get insight from others</a></li>
-            </ul>
             <h1 class="text_over_image">In2Free</h1>
             
                 <div class="box a">
@@ -47,20 +43,16 @@
                 <div class="box j">
                         <img src="/storage/bg/img10.jpg">
                 </div>
-            
-
         
-
+               
+        
        </div>
-       <div id="container"> 
-            <div id="express_your_thought"><h1>express your thought</h1>
-                <a href="/shared/{{$userid}}" class="transparent_btn"> random </a> 
-                <a href="/topics" class="transparent_btn"> catalog </a>
-            </div>
-            <div id="get_insight_from_others"><h1>get insight from others</h1>
-                <a href="/newfriends" class="transparent_btn"> reach out peers </a> 
-                <a href="/shared" class="transparent_btn"> see peer's work </a>
-            </div>
+
+        <div id="express_your_thought">
+                <a href="{{ route('login') }}" class="transparent_btn_login"> Login </a> 
+                <a href="/register" class="transparent_btn_login"> Register </a>
+        </div>       
+                
         </div>
     </body>
 </html>

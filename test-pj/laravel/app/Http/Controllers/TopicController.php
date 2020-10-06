@@ -51,8 +51,11 @@ class TopicController extends Controller
         $whichPage = "selected";
         $selected_category = $debate_topics->category;
         $debateTopics = $debate_topics->topic;
+        
         $randomIndex = $debate_topics->id;
+       
         $userid = auth()->user()->id;
+       
         $users = \App\User::all();
         $user = auth()->user();
         $follows = (auth()->user()) ? auth()->user()->following->contains($user->id) : false;

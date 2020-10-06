@@ -934,36 +934,40 @@ if ( result !== null) {
 }
 // outline is ganna be new page (detailed page after you click each topic)
 
-
+let imgurl;
 let categoryList = document.getElementById('category-list')
-// categroy 
-let categroyArry = ['economy','sports','politics', 'music', 'social issues','technology', 'education','others']
-categroyArry.map(categ => 
+let categroyArry = ['economy','sports','politics', 'music', 'social_issues','technology', 'education','others']
+let imagArr = ['economy.jpg','sports.jpg','politics.jpg','music.jpg','social.jpg','tech.jpg','education.jpg','others.jpg']
+//categroyArry.map(categ => 
+for (i = 0; i < categroyArry.length; i++) {
     
+
     $('#category-list').append( 
-        `<div id="category-card" style="display: inline-block;" class="category-card" onclick="categoryMapping('${categ}')">
-            <div class="card text-white" style="display: inline-block; width:300px; margin: 10px;">
-                <img class="card-img" src="https://picsum.photos/100/200?grayscale" alt="Card image" style="height:300px">
-                <div class="card-img-overlay">
-                    <h5 class="card-title">${categ}</h5>
-                </div>
-            </div>
+        `<div id="category-card${i}" style="position:relative; width: 100%; height: 100%;" class="category-card-${categroyArry[i]} title" onclick="categoryMapping('${categroyArry[i]}')">
+                
+                <h1 class="card-title" style="">${categroyArry[i]}</h1>     
+           
         </div>`
-    ))
+    )
+}
+
+//<img class="card-img" src="/storage/catalog/${imagArr[i]}" alt="Card image" style="height:300px">
+//<div class="card-img-overlay">
 
 let topicList = document.getElementById("#topic-list")                 
 let categoryMapping =(categ)=>{
+    $("#topic-register").hide()
     $("#category-list").hide()
     $("#topic-list").show()
     $("#back-to-category-btn").show()
     const result = topiccatalogs.filter(obj => obj.category === categ);
+    console.log(result)
     result.map(data => 
         $('#topic-list').append( 
-            ` <a href="/topics/${data.id}"> <div id="topic-card" class="card border-primary mb-3">
-                <div class="card-header">${data.category}</div>
+            ` <a href="/topics/${data.id}" style="text-decoration: none; color:#fdb515;" > <div id="topic-card" class="card mb-3" style="border-color:#3b7ea1; color:#fdb515; margin-right:10px">
+                <div class="card-header" style="background:#3b7ea1;">${data.category}</div>
                 <div class="card-body text-primary">
-                    <h5 class="card-title">${data.topic}</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <h5 class="card-title" style="color:#3b7ea1;">${data.topic}</h5>
                 </div>
             </a></div>`
     ))

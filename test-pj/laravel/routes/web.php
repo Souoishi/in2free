@@ -24,8 +24,10 @@ Route::get('/email', function(){
 
 Route::post('/follow/{user}', 'FollowsController@store');
 
+Route::get('/', 'RouteController@homepage');
+Route::get('/menue', 'RouteController@index');
 
-Route::get('/', 'RouteController@index');
+
 Route::get('/shared', 'PostsController@index');
 Route::get('/p/create', 'PostsController@create');
 Route::get('/p/{post}', 'PostsController@show');

@@ -10,7 +10,14 @@ class RouteController extends Controller
     {   
         $userid = auth()->user()->id;
 
-        return view('welcome', compact('userid'));
+        return view('menue', compact('userid'));
+    }
+
+    public function homepage()
+    {   
+       
+
+        return view('welcome');
     }
 
     
