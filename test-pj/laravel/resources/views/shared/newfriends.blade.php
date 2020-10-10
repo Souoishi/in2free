@@ -28,7 +28,7 @@
                     
                     <div class="">
                         <div class="d-flex"> 
-                            <img src="{{ $user->profile[0]->profileImage() }}" class="rounded-circle" style="width: 10rem; margin:1rem;">
+                            <img src="{{url($user->profile[0]->profileImage())}}" class="rounded-circle" style="width: 10rem; margin:1rem;">
                             
                             <div class="card-body">
                                 <h5 class="card-title"> Special title treatment</h5>

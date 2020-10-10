@@ -45,6 +45,19 @@ class ProfilesController extends Controller
 
         $Topics =  \App\Debate_topics::all();
 
+
+        // from here Isizuka san
+        $profile = auth()->user()->outlines ;
+
+        $count = count($profile) === 0 ? "0.0" : count($profile) ;
+        $level = count($profile) / 10 === 0 ? "0.0" : count($profile) / 10;
+        $number = explode('.', $level) === 0 ? "0.0" : explode('.', $level);
+        $levelbar = $number[1] * 10 === 0 ? "0.0" : $number[1] * 10;
+
+
+
+
+
         // to get actuall user data, we need lines below:
         // User -> model and fetching User data with THE keyword $user
         // if you put profile/1 on browser as $user, then if your db has the user number,
@@ -54,8 +67,8 @@ class ProfilesController extends Controller
         // here we pass $user into home.php as attribute
         // on the ./view/home.php, you can recive the $user in {{}} 
         // you recive user from varuable of index, then pass it to $user
-        return view('profiles.index', compact('user', 'follows', 'postCount', 'followersCount', 'followingCount','Topics' ));
-        // you can use compact here 
+        //return view('profiles.index', compact('user', 'follows', 'postCount', 'followersCount', 'followingCount','Topics' ));
+        return view('profiles.index', compact('user', 'follows', 'postCount', 'followersCount', 'followingCount','Topics','count', 'number','levelbar' ));
             //return view('profiles.index', compact('user'));
     }
 

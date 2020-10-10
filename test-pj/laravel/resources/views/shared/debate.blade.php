@@ -32,7 +32,7 @@
             <a id="next-topic" 
                 role="button" 
                 class="btn btn-primary" 
-                href="/shared/{{$user->id}}" 
+                href="{{url('/shared', [$user->id])}}" 
                 style="background: #3b7ea1; border-color:#3b7ea1; color:#fdb515; margin-right:10px"
                 onclick='(function(){
                     localStorage.removeItem("topicInd")
@@ -115,7 +115,7 @@
 
     <!--<profile-card :users="{{ $user }}" >
     <profile-card/>-->
-    <form action="/p" enctype="multipart/form-data" method="post">
+    <form action="{{url('/p')}}" enctype="multipart/form-data" method="post">
         @csrf
         <div class="word-card card mb-3" style="border-color:#3b7ea1;">
             <input type="text" id="wordDammyTopic" name="wordDammyTopic" style="display:none;">
@@ -164,13 +164,14 @@
     <h1 class="col-sm-10"> Create your Outline </h1>
 
             
-    <form action="/outline" enctype="multipart/form-data" method="post">
+    <form action="{{url('/outline')}}" enctype="multipart/form-data" method="post">
         @csrf
         <div class="form-group row">
         <input type="text" id="dammyTopic" name="dammyTopic" style="display:none;">
         <input type="text" id="dammyCateg" name="dammyCateg" style="display:none;">
         <input type="text" id="dammyTopicId" name="dammyTopicId" style="display:none;">
         <input type="text" id="whichPage" name="whichPage" style="display:none;">
+        ---> koko 
             <!--topic id-->
         <input type="number" class="form-control form-control-lg" id="dbtopic_id" name="dbtopic_id" style="display:none;">
             <label for="inputPassword" class="col-sm-2 col-form-label">Take position</label> <span>

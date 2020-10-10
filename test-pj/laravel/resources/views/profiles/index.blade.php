@@ -6,7 +6,7 @@
        <div class="col-3 p-5">
             <img src="{{ asset($user->profile[0]->profileImage()) }}" class="rounded-circle w-100" >
        </div>
-       <div class="col-9 pt-5">
+       <div class="col-5 pt-5">
        <!--what are you doing now is same as user.username in js-->
         <div class='d-flex justify-content-between align-items-baseline'>
             <div class="d-flex align-item-center pb-3">
@@ -31,6 +31,24 @@
         <div><a href="#">{{ $user->profile[0]->url }}</a></div>
 
        </div>
+
+       <div class="col-3 pt-5">
+            <div class="p-3 game">
+                <h5>《 Lv.{{ $number[0] }} 》</h5>
+                <div>
+                    <div>Next Level Up ... {{ $number[1] }}/10</div>
+                    <div class="progress" style="height: 25px;">
+                        <div class="progress-bar progress-bar-striped bg-warning progress-bar-animated" role="progressbar"  style="width: {{ $levelbar }}%" aria-valuenow="{{ $levelbar }}" aria-valuemin="0" aria-valuemax="100">
+                        {{ $number[1] }}exp
+                        </div>
+                    </div>
+                    
+                </div>
+                <br>
+                <div>Total Exp : {{ $count }} exp</div>
+            </div>
+        </div>
+
    </div>   
    <!--<div class="row pt-4">-->
     

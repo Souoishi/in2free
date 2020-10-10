@@ -24,16 +24,16 @@ class OutlineController extends Controller
             'support3' => request('support3'),
             'detail3' => request('detail3')
         ]);
-
+        
         $whichPage = request('whichPage');
         
         $debateTopics = request('dammyTopic');
         $randomIndex = request('dammyTopicId');
         $selected_category = request('dammyCateg');
         
-
         
         
+    
         
     
         

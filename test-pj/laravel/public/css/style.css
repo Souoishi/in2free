@@ -423,3 +423,10 @@ ul li a:hover
 	-webkit-transform: scale(1);
 	transform: scale(1);
 }
+
+
+
+.game {
+    border : 2px solid #e5e5e5;
+    border-radius: 25px;
+}
