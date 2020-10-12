@@ -40,6 +40,7 @@ class TopicController extends Controller
     {
         $outlines =  \App\Outline::all();
         $users = \App\User::all();
+        
         // compact do the exactly same thing as we did in auth->user->posts()->create...
         return view('shared.showoutline', compact('debate_topics', 'outlines','users'));
     }

@@ -328,9 +328,12 @@ function count_down(){
             
             phaseInd = 4
             localStorage.setItem('phaseInd', phaseInd)
-            //topic = document.getElementById('topic').value
-            //topicInd = document.getElementById('topicInd').value
-            //localStorage.setItem('topicInd', topicInd)
+            
+
+            
+
+
+
             
             //LOCALSTORAGE　4でホールド！
             //渡来揚げん　か　ゴーネクストで phaseId = 0
@@ -1035,21 +1038,21 @@ if ( outlineResult !== null) {
                     <label for="support1-read${i}" class="col-sm-2 col-form-label">support 1</label>
                     <div class="col-sm-10">
                         <input type="text" readonly class="form-control" id="support1-read${i}" name="support1-read${i}" value="${outlines[i].support1}" >
-                        <textarea readonly rows="4" style="margin-top: 10px;" cols="50" id="detail1${i}" name="detail1${i}" value="${outlines[i].detail1}"></textarea>
+                        <textarea readonly rows="4" style="margin-top: 10px;" cols="50" id="detail1${i}" name="detail1${i}" value="${outlines[i].detail1}">${outlines[i].detail1}</textarea>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="support2-read${i}" class="col-sm-2 col-form-label">support 2</label>
                     <div class="col-sm-10">
                         <input type="text" readonly class="form-control" id="support2-read${i}" name="support2-read${i}" value="${outlines[i].support2}">
-                        <textarea readonly rows="4" style="margin-top: 10px;" cols="50" id="detail2-read${i}" name="detail2-read${i}" value="${outlines[i].detail2}"></textarea>
+                        <textarea readonly rows="4" style="margin-top: 10px;" cols="50" id="detail2-read${i}" name="detail2-read${i}" value="${outlines[i].detail2}">${outlines[i].detail2}</textarea>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="support3-read${i}" class="col-sm-2 col-form-label">support 3</label>
                     <div class="col-sm-10">
                         <input type="text" readonly class="form-control" id="support3-read${i}" name="support3-read${i}" value="${outlines[i].support3}">
-                        <textarea readonly rows="4" style="margin-top: 10px;" cols="50"  id="detail3-read${i}" name="detail3-read${i}" value="${outlines[i].detail3}"></textarea>
+                        <textarea readonly rows="4" style="margin-top: 10px;" cols="50"  id="detail3-read${i}" name="detail3-read${i}" value="${outlines[i].detail3}">${outlines[i].detail3}</textarea>
                     </div>
             
             </div>`
@@ -1098,7 +1101,7 @@ if ( cardsOfUserResult !== null) {
 
                 <div class="form-group" style="margin: 10px">
                     <label for="exmple">Example sentense</label>
-                    <textarea readonly class="form-control" id="exmple${i}" name="exmple" rows="3" value="${cardsOfUser[i].exmp}"></textarea>
+                    <textarea readonly class="form-control" id="exmple${i}" name="exmple" rows="3" value="${cardsOfUser[i].exmp}">${cardsOfUser[i].exmp}</textarea>
         
                 </div>
                 <a id="post-detail${i}" 
@@ -1153,21 +1156,21 @@ if ( outlinePerUserResult !== null) {
                     <label for="user-support1-read${i}" class="col-sm-2 col-form-label">support 1</label>
                     <div class="col-sm-10">
                         <input type="text" readonly class="form-control" id="user-support1-read${i}" name="user-support1-read${i}" value="${outlinePerUser[i].support1}" >
-                        <textarea readonly rows="4" style="margin-top: 10px;" cols="50" id="user-detail1${i}" name="user-detail1${i}" value="${outlinePerUser[i].detail1}"></textarea>
+                        <textarea readonly rows="4" style="margin-top: 10px;" cols="50" id="user-detail1${i}" name="user-detail1${i}" value="${outlinePerUser[i].detail1}">${outlinePerUser[i].detail1}</textarea>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="user-support2-read${i}" class="col-sm-2 col-form-label">support 2</label>
                     <div class="col-sm-10">
                         <input type="text" readonly class="form-control" id="user-support2-read${i}" name="user-support2-read${i}" value="${outlinePerUser[i].support2}">
-                        <textarea readonly rows="4" style="margin-top: 10px;" cols="50" id="user-detail2-read${i}" name="user-detail2-read${i}" value="${outlinePerUser[i].detail2}"></textarea>
+                        <textarea readonly rows="4" style="margin-top: 10px;" cols="50" id="user-detail2-read${i}" name="user-detail2-read${i}" value="${outlinePerUser[i].detail2}">${outlinePerUser[i].detail2}</textarea>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="user-support3-read${i}" class="col-sm-2 col-form-label">support 3</label>
                     <div class="col-sm-10">
                         <input type="text" readonly class="form-control" id="user-support3-read${i}" name="user-support3-read${i}" value="${outlinePerUser[i].support3}">
-                        <textarea readonly rows="4" style="margin-top: 10px;" cols="50"  id="user-detail3-read${i}" name="user-detail3-read${i}" value="${outlinePerUser[i].detail3}"></textarea>
+                        <textarea readonly rows="4" style="margin-top: 10px;" cols="50"  id="user-detail3-read${i}" name="user-detail3-read${i}" value="${outlinePerUser[i].detail3}">${outlinePerUser[i].detail3}</textarea>
                     </div>
             
             </div>`
